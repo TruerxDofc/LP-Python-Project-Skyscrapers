@@ -385,8 +385,6 @@ class Game_3x3(arcade.View):
         self.manager_of_back_button.draw()
         self.manager_of_tip_button.draw()
 
-        arcade.draw_rectangle_filled(SCREEN_WIDTH/2, SCREEN_HEIGHT/2, 10, 10, arcade.color.BLACK)
-
         
 
     def on_mouse_press(self, x, y, button, modifiers):
@@ -394,7 +392,7 @@ class Game_3x3(arcade.View):
 
         # Перевод координат нажатия мышью в элемент на сетке
         # В условии необходимо ставить коэффициент равный генерации сетки+0,5, а в вычислении ячейки ставить коэффициент равный генерации сетки+1,5
-        if x>= ((WIDTH + MARGIN) + SCREEN_WIDTH/2 - (WIDTH + MARGIN)*2.5 + 4) and y >= ((HEIGHT + MARGIN) + SCREEN_HEIGHT/2 - (HEIGHT + MARGIN)*3.5 + 4) and x<= ((WIDTH + MARGIN) + SCREEN_WIDTH/2 + (WIDTH + MARGIN)*0.5 + 4) and y <= ((HEIGHT + MARGIN) + SCREEN_HEIGHT/2 - (HEIGHT + MARGIN)*0.5 + 4):
+        if x>= ((WIDTH + MARGIN) + SCREEN_WIDTH/2 - (WIDTH + MARGIN)*2.5 + 2) and y >= ((HEIGHT + MARGIN) + SCREEN_HEIGHT/2 - (HEIGHT + MARGIN)*3.5 + 2) and x<= ((WIDTH + MARGIN) + SCREEN_WIDTH/2 + (WIDTH + MARGIN)*0.5 + 2) and y <= ((HEIGHT + MARGIN) + SCREEN_HEIGHT/2 - (HEIGHT + MARGIN)*0.5 + 2):
             column = int((x-((WIDTH + MARGIN) + SCREEN_WIDTH/2 - (WIDTH + MARGIN)*3.5 + 4)) // (WIDTH + MARGIN))
             row = int((y-((HEIGHT + MARGIN) + SCREEN_HEIGHT/2 - (HEIGHT + MARGIN)*4.5 + 4)) // (HEIGHT + MARGIN))
 
@@ -726,9 +724,9 @@ class Game_5x5(arcade.View):
         # Вызываетя при нажатии на мышь
 
         # Перевод координат нажатия мышью в элемент на сетке
-        if x>= ((WIDTH + MARGIN) + SCREEN_WIDTH/2 - (WIDTH + MARGIN)*2.5 + 4) and y >= ((HEIGHT + MARGIN) + SCREEN_HEIGHT/2 - (HEIGHT + MARGIN)*2.5 + 4):
-            column = int((x-((WIDTH + MARGIN) + SCREEN_WIDTH/2 - (WIDTH + MARGIN)*2.5 + 4)) // (WIDTH + MARGIN))
-            row = int((y-((HEIGHT + MARGIN) + SCREEN_HEIGHT/2 - (HEIGHT + MARGIN)*2.5 + 4)) // (HEIGHT + MARGIN))
+        if x>= ((WIDTH + MARGIN) + SCREEN_WIDTH/2 - (WIDTH + MARGIN)*3.5 + 4) and y >= ((HEIGHT + MARGIN) + SCREEN_HEIGHT/2 - (HEIGHT + MARGIN)*4.5 + 4) and x<= ((WIDTH + MARGIN) + SCREEN_WIDTH/2 + (WIDTH + MARGIN)*1.5 + 2) and y <= ((HEIGHT + MARGIN) + SCREEN_HEIGHT/2 + (HEIGHT + MARGIN)*0.5 + 2):
+            column = int((x-((WIDTH + MARGIN) + SCREEN_WIDTH/2 - (WIDTH + MARGIN)*4.5 + 4)) // (WIDTH + MARGIN))
+            row = int((y-((HEIGHT + MARGIN) + SCREEN_HEIGHT/2 - (HEIGHT + MARGIN)*5.5 + 4)) // (HEIGHT + MARGIN))
 
             print(f"Click coordinates: ({x}, {y}). Grid coordinates: ({row}, {column}). Row: {ROW_COUNT}")
 
