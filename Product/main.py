@@ -251,13 +251,18 @@ class Game_3x3(arcade.View):
         # указатель на значения в игровом поле
         self.grid_numbers = []
 
+        global ROW_COUNT
+        ROW_COUNT = 5
+        global COLUMN_COUNT
+        COLUMN_COUNT = 5
+
         # Создание игрового поля
         for row in range(ROW_COUNT):
             self.grid_sprites.append([])
             self.grid_numbers.append([])
             for column in range(COLUMN_COUNT):
-                x = column * (WIDTH + MARGIN) + SCREEN_WIDTH/2 - (WIDTH + MARGIN)
-                y = row * (HEIGHT + MARGIN) + SCREEN_HEIGHT/2 - (HEIGHT + MARGIN)
+                x = column * (WIDTH + MARGIN) + SCREEN_WIDTH/2 - (WIDTH + MARGIN)*2
+                y = row * (HEIGHT + MARGIN) + SCREEN_HEIGHT/2 - (HEIGHT + MARGIN)*3
                 sprite = MySprite("Product/0.png", 0.6)
                 like_empty_sprite = MySprite("Product/likeempty.png", 0.6)
                 empty_sprite = MySprite("Product/empty.png", 0.6)
@@ -306,6 +311,8 @@ class Game_3x3(arcade.View):
         self.manager_of_tip_button = arcade.gui.UIManager()
         self.manager_of_tip_button.enable()
 
+        
+
         # Create a vertical BoxGroup to align buttons
         self.v_box_of_back_button = arcade.gui.UIBoxLayout()
         self.v_box_of_tip_button = arcade.gui.UIBoxLayout()
@@ -340,15 +347,18 @@ class Game_3x3(arcade.View):
         self.manager_of_back_button.draw()
         self.manager_of_tip_button.draw()
 
+        arcade.draw_rectangle_filled(SCREEN_WIDTH/2, SCREEN_HEIGHT/2, 10, 10, arcade.color.BLACK)
+
         
 
     def on_mouse_press(self, x, y, button, modifiers):
         # Вызываетя при нажатии на мышь
 
         # Перевод координат нажатия мышью в элемент на сетке
-        if x>= ((WIDTH + MARGIN) + SCREEN_WIDTH/2 - (WIDTH + MARGIN)*2.5 + 4) and y >= ((HEIGHT + MARGIN) + SCREEN_HEIGHT/2 - (HEIGHT + MARGIN)*2.5 + 4):
-            column = int((x-((WIDTH + MARGIN) + SCREEN_WIDTH/2 - (WIDTH + MARGIN)*2.5 + 4)) // (WIDTH + MARGIN))
-            row = int((y-((HEIGHT + MARGIN) + SCREEN_HEIGHT/2 - (HEIGHT + MARGIN)*2.5 + 4)) // (HEIGHT + MARGIN))
+        # В условии необходимо ставить коэффициент равный генерации сетки+0,5, а в вычислении ячейки ставить коэффициент равный генерации сетки+1,5
+        if x>= ((WIDTH + MARGIN) + SCREEN_WIDTH/2 - (WIDTH + MARGIN)*2.5 + 4) and y >= ((HEIGHT + MARGIN) + SCREEN_HEIGHT/2 - (HEIGHT + MARGIN)*3.5 + 4) and x<= ((WIDTH + MARGIN) + SCREEN_WIDTH/2 + (WIDTH + MARGIN)*0.5 + 4) and y <= ((HEIGHT + MARGIN) + SCREEN_HEIGHT/2 - (HEIGHT + MARGIN)*0.5 + 4):
+            column = int((x-((WIDTH + MARGIN) + SCREEN_WIDTH/2 - (WIDTH + MARGIN)*3.5 + 4)) // (WIDTH + MARGIN))
+            row = int((y-((HEIGHT + MARGIN) + SCREEN_HEIGHT/2 - (HEIGHT + MARGIN)*4.5 + 4)) // (HEIGHT + MARGIN))
 
             print(f"Click coordinates: ({x}, {y}). Grid coordinates: ({row}, {column})")
 
@@ -382,6 +392,11 @@ class Game_4x4(arcade.View):
         self.grid_sprites = []
         # указатель на значения в игровом поле
         self.grid_numbers = []
+
+        global ROW_COUNT
+        ROW_COUNT = 6
+        global COLUMN_COUNT
+        COLUMN_COUNT = 6
 
         # Создание игрового поля
         for row in range(ROW_COUNT):
@@ -515,7 +530,9 @@ class Game_5x5(arcade.View):
         # указатель на значения в игровом поле
         self.grid_numbers = []
 
+        global ROW_COUNT
         ROW_COUNT = 7
+        global COLUMN_COUNT
         COLUMN_COUNT = 7
 
         # Создание игрового поля
@@ -523,8 +540,8 @@ class Game_5x5(arcade.View):
             self.grid_sprites.append([])
             self.grid_numbers.append([])
             for column in range(COLUMN_COUNT):
-                x = column * (WIDTH + MARGIN) + SCREEN_WIDTH/2 - (WIDTH + MARGIN)
-                y = row * (HEIGHT + MARGIN) + SCREEN_HEIGHT/2 - (HEIGHT + MARGIN)
+                x = column * (WIDTH + MARGIN) + SCREEN_WIDTH/2 - (WIDTH + MARGIN)*3
+                y = row * (HEIGHT + MARGIN) + SCREEN_HEIGHT/2 - (HEIGHT + MARGIN)*4
                 sprite = MySprite("Product/0.png", 0.6)
                 like_empty_sprite = MySprite("Product/likeempty.png", 0.6)
                 empty_sprite = MySprite("Product/empty.png", 0.6)
