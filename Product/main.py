@@ -1,5 +1,6 @@
 import arcade
 import arcade.gui
+import random
 
 SCREEN_WIDTH = 1280
 SCREEN_HEIGHT = 768
@@ -79,6 +80,15 @@ class Localization():
         text_of_game3x3 = "Size 3x3"
         text_of_game4x4 = "Size 4x4"
         text_of_game5x5 = "Size 5x5"
+
+# Перестановка столбцов массива
+def transpose_columns(matrix, col1, col2):
+    for row in matrix:
+        row[col1], row[col2] = row[col2], row[col1]
+
+# Перестановка строк массива
+def transpose_rows(matrix, row1, row2):
+    matrix[row1], matrix[row2] = matrix[row2], matrix[row1]
 
 class MySprite(arcade.Sprite):
     def __init__(self, image_file, scale):
@@ -251,10 +261,38 @@ class Game_3x3(arcade.View):
         # указатель на значения в игровом поле
         self.grid_numbers = []
 
+        # основа сгенерированной сетки
+        self.grid_generated = [
+            [1,2,3],
+            [3,1,2],
+            [2,3,1]
+        ]
+
         global ROW_COUNT
         ROW_COUNT = 5
         global COLUMN_COUNT
         COLUMN_COUNT = 5
+
+        # Случайная перестановка столбцов
+        randomLoopCount = random.randint(1,4)
+        for i in range(1, randomLoopCount):
+            randomLine1 = random.randint(0,2)
+            randomLine2 = random.randint(0,2)
+            while randomLine1 == randomLine2:
+                randomLine2 = random.randint(0,2)
+            transpose_columns(self.grid_generated, randomLine1, randomLine2)
+        
+        # Случайная перестановка строк
+        randomLoopCount = random.randint(1,4)
+        for i in range(1, randomLoopCount):
+            randomLine1 = random.randint(0,2)
+            randomLine2 = random.randint(0,2)
+            while randomLine1 == randomLine2:
+                randomLine2 = random.randint(0,2)
+            transpose_rows(self.grid_generated, randomLine1, randomLine2)
+
+        for line in self.grid_generated:
+            print(line)
 
         # Создание игрового поля
         for row in range(ROW_COUNT):
@@ -393,10 +431,38 @@ class Game_4x4(arcade.View):
         # указатель на значения в игровом поле
         self.grid_numbers = []
 
+        self.grid_generated = [
+            [1,2,3,4],
+            [4,1,2,3],
+            [3,4,1,2],
+            [2,3,4,1]
+        ]
+
         global ROW_COUNT
         ROW_COUNT = 6
         global COLUMN_COUNT
         COLUMN_COUNT = 6
+
+        randomLoopCount = random.randint(1,4)
+        for i in range(1, randomLoopCount):
+            randomLine1 = random.randint(0,3)
+            randomLine2 = random.randint(0,3)
+            while randomLine1 == randomLine2:
+                randomLine2 = random.randint(0,3)
+            transpose_columns(self.grid_generated, randomLine1, randomLine2)
+        
+        # Случайная перестановка строк
+        randomLoopCount = random.randint(1,4)
+        for i in range(1, randomLoopCount):
+            randomLine1 = random.randint(0,3)
+            randomLine2 = random.randint(0,3)
+            while randomLine1 == randomLine2:
+                randomLine2 = random.randint(0,3)
+            transpose_rows(self.grid_generated, randomLine1, randomLine2)
+
+        for line in self.grid_generated:
+            print(line)
+
 
         # Создание игрового поля
         for row in range(ROW_COUNT):
@@ -516,6 +582,7 @@ class Game_4x4(arcade.View):
                     break
             print(self.grid_numbers)
 
+
 class Game_5x5(arcade.View):
     def __init__(self):
         super().__init__()
@@ -530,10 +597,39 @@ class Game_5x5(arcade.View):
         # указатель на значения в игровом поле
         self.grid_numbers = []
 
+        self.grid_generated = [
+            [1,2,3,4,5],
+            [5,1,2,3,4],
+            [4,5,1,2,3],
+            [3,4,5,1,2],
+            [2,3,4,5,1]
+        ]
+
         global ROW_COUNT
         ROW_COUNT = 7
         global COLUMN_COUNT
         COLUMN_COUNT = 7
+
+        randomLoopCount = random.randint(1,4)
+        for i in range(1, randomLoopCount):
+            randomLine1 = random.randint(0,4)
+            randomLine2 = random.randint(0,4)
+            while randomLine1 == randomLine2:
+                randomLine2 = random.randint(0,4)
+            transpose_columns(self.grid_generated, randomLine1, randomLine2)
+        
+        # Случайная перестановка строк
+        randomLoopCount = random.randint(1,4)
+        for i in range(1, randomLoopCount):
+            randomLine1 = random.randint(0,4)
+            randomLine2 = random.randint(0,4)
+            while randomLine1 == randomLine2:
+                randomLine2 = random.randint(0,4)
+            transpose_rows(self.grid_generated, randomLine1, randomLine2)
+
+        for line in self.grid_generated:
+            print(line)
+
 
         # Создание игрового поля
         for row in range(ROW_COUNT):
