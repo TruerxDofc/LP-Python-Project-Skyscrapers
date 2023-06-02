@@ -1,6 +1,7 @@
 import arcade
 import arcade.gui
 import random
+import re
 
 SCREEN_WIDTH = 1280
 SCREEN_HEIGHT = 768
@@ -16,19 +17,21 @@ MARGIN = 2
 
 grid_mode = "default"
 background_mode = "mountain"
-amount_of_coins = "0"
+amount_of_coins = 0
 
 
 text_of_play_button = ""; text_of_shop_button = ""; text_of_settings_button = ""
 text_of_achievements_button = ""; text_of_exit_button = ""; text_of_back_button = ""; text_of_back_to_mm = ""
 text_of_language_settings = ""; text_of_resolution_settings = ""
 text_of_tip_button = ""; text_of_tip = ""; text_of_game3x3 = ""; text_of_game4x4 = ""; text_of_game5x5 = ""; text_of_win_window = ""; text_of_win_window_coins = ""
+text_of_win_window_coin = ""; text_of_shop_coins = ""
 
 class Localization():
     def Russian_lang(self):
         global text_of_play_button, text_of_shop_button, text_of_settings_button, text_of_achievements_button, \
             text_of_exit_button, text_of_back_button, text_of_back_to_mm, text_of_language_settings, text_of_resolution_settings, \
-            text_of_tip_button, text_of_tip, text_of_game3x3, text_of_game4x4, text_of_game5x5, text_of_win_window, text_of_win_window_coins
+            text_of_tip_button, text_of_tip, text_of_game3x3, text_of_game4x4, text_of_game5x5, text_of_win_window, text_of_win_window_coins, \
+            text_of_win_window_coin, text_of_shop_coins
 
         text_of_play_button = "Играть"
         text_of_shop_button = "Магазин"
@@ -55,11 +58,14 @@ class Localization():
         text_of_game5x5 = "Размер 5х5"
         text_of_win_window = "Поздравляем! Вы решили задачку!"
         text_of_win_window_coins = "Вы получили: "
+        text_of_win_window_coin = "монет"
+        text_of_shop_coins = "Ваши монеты: "
 
     def English_lang(self):
         global text_of_play_button, text_of_shop_button, text_of_settings_button, text_of_achievements_button, \
             text_of_exit_button, text_of_back_button, text_of_back_to_mm, text_of_language_settings, text_of_resolution_settings, \
-            text_of_tip_button, text_of_tip, text_of_game3x3, text_of_game4x4, text_of_game5x5, text_of_win_window, text_of_win_window_coins
+            text_of_tip_button, text_of_tip, text_of_game3x3, text_of_game4x4, text_of_game5x5, text_of_win_window, text_of_win_window_coins, \
+            text_of_win_window_coin, text_of_shop_coins
 
         text_of_play_button = "Play"
         text_of_shop_button = "Shop"
@@ -87,6 +93,8 @@ class Localization():
         text_of_game5x5 = "Size 5x5"
         text_of_win_window = "Congratulations! You solved the problem!"
         text_of_win_window_coins = "You got: "
+        text_of_win_window_coin = "coins"
+        text_of_shop_coins = "Your coins: "
 
 # Перестановка столбцов массива
 def transpose_columns(matrix, col1, col2):
@@ -159,6 +167,27 @@ def generate_array(input_array):
         count_visible = 0
 
     return output_array
+
+# Добавить значение в meta файл
+def write_data(file_name, word, data):
+    with open(file_name, 'r+') as file:
+        lines = file.readlines()
+        for i, line in enumerate(lines):
+            if word in line:
+                lines[i] = '{} {}\n'.format(word, data)
+                break
+        file.seek(0)
+        file.writelines(lines)
+
+# Извлечь значение из meta файла
+def read_data(file_name, word):
+    with open(file_name, 'r') as file:
+        lines = file.readlines()
+        for line in lines:
+            if word in line:
+                data = re.search(r'{}(.*)'.format(word), line).group(1)
+                return data.strip()
+            
 
 class MySprite(arcade.Sprite):
     def __init__(self, image_file, scale):
@@ -540,6 +569,10 @@ class Game_3x3(arcade.View):
             self.grid_numbers_less = [row[1:4] for row in self.grid_numbers[1:4]]
 
             if self.grid_numbers_less == self.grid_generated:
+                global amount_of_coins
+                amount_of_coins = 5
+                coin = int(read_data('Product/meta.txt', 'coins =')) + 5
+                write_data('Product/meta.txt', 'coins =', coin)
                 game_view = Win_window()
                 self.window.show_view(game_view)
                 managerclear(self)
@@ -735,6 +768,18 @@ class Game_4x4(arcade.View):
             # Проверка на правильность
             self.grid_numbers_less = self.grid_numbers
 
+            self.grid_numbers_less = [row[1:5] for row in self.grid_numbers[1:5]]
+
+            if self.grid_numbers_less == self.grid_generated:
+                global amount_of_coins
+                amount_of_coins = 30
+                coin = read_data('Product/meta.txt', 'coins =') + 30
+                write_data('Product/meta.txt', 'coins =', coin)
+                game_view = Win_window()
+                self.window.show_view(game_view)
+                managerclear(self)
+                uimanagerclear(self)
+
 
 class Game_5x5(arcade.View):
     def __init__(self):
@@ -925,6 +970,18 @@ class Game_5x5(arcade.View):
             # Проверка на правильность
             self.grid_numbers_less = self.grid_numbers
 
+            self.grid_numbers_less = [row[1:6] for row in self.grid_numbers[1:6]]
+
+            if self.grid_numbers_less == self.grid_generated:
+                global amount_of_coins
+                amount_of_coins = 100
+                coin = read_data('Product/meta.txt', 'coins =') + 100
+                write_data('Product/meta.txt', 'coins =', coin)
+                game_view = Win_window()
+                self.window.show_view(game_view)
+                managerclear(self)
+                uimanagerclear(self)
+
 
 
 class Shop(arcade.View):
@@ -973,6 +1030,8 @@ class Shop(arcade.View):
         self.clear()
         arcade.draw_lrwh_rectangle_textured(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, self.background)
         self.manager.draw()
+        arcade.draw_text(f"{text_of_shop_coins}{read_data('Product/meta.txt', 'coins =')}", SCREEN_WIDTH / 2, SCREEN_HEIGHT - 60,
+                         arcade.color.BLACK, 30, anchor_x="center")
 
 
 class Settings_Menu(arcade.View):
@@ -1120,6 +1179,8 @@ class Win_window(arcade.View):
 
         self.background = arcade.load_texture("Product/win_window.jpg")
 
+        global amount_of_coins
+
     def setup(self):
         """ This should set up your game and get it ready to play """
         # Replace 'pass' with the code to set up your game
@@ -1159,7 +1220,7 @@ class Win_window(arcade.View):
         self.manager.draw()
         arcade.draw_text(text_of_win_window, SCREEN_WIDTH / 2, 100,
                          arcade.color.BLACK, 30, anchor_x="center")
-        arcade.draw_text(f"{text_of_win_window_coins}монеты* монет", SCREEN_WIDTH / 2, 50,
+        arcade.draw_text(f"{text_of_win_window_coins}{amount_of_coins} {text_of_win_window_coin}", SCREEN_WIDTH / 2, 50,
                          arcade.color.BLACK, 30, anchor_x="center")
 
 

@@ -1,0 +1,3 @@
+grid_mode = 
+coins = 10
+background_mode = 
