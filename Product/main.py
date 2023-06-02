@@ -14,18 +14,21 @@ WIDTH = 60
 HEIGHT = 60
 MARGIN = 2
 
+grid_mode = "default"
+background_mode = "mountain"
+amount_of_coins = "0"
+
 
 text_of_play_button = ""; text_of_shop_button = ""; text_of_settings_button = ""
 text_of_achievements_button = ""; text_of_exit_button = ""; text_of_back_button = ""; text_of_back_to_mm = ""
 text_of_language_settings = ""; text_of_resolution_settings = ""
-text_of_tip_button = ""; text_of_tip = ""; text_of_game3x3 = ""; text_of_game4x4 = ""; text_of_game5x5 = ""
-
+text_of_tip_button = ""; text_of_tip = ""; text_of_game3x3 = ""; text_of_game4x4 = ""; text_of_game5x5 = ""; text_of_win_window = ""; text_of_win_window_coins = ""
 
 class Localization():
     def Russian_lang(self):
         global text_of_play_button, text_of_shop_button, text_of_settings_button, text_of_achievements_button, \
             text_of_exit_button, text_of_back_button, text_of_back_to_mm, text_of_language_settings, text_of_resolution_settings, \
-            text_of_tip_button, text_of_tip, text_of_game3x3, text_of_game4x4, text_of_game5x5
+            text_of_tip_button, text_of_tip, text_of_game3x3, text_of_game4x4, text_of_game5x5, text_of_win_window, text_of_win_window_coins
 
         text_of_play_button = "Играть"
         text_of_shop_button = "Магазин"
@@ -50,11 +53,13 @@ class Localization():
         text_of_game3x3 = "Размер 3х3"
         text_of_game4x4 = "Размер 4х4"
         text_of_game5x5 = "Размер 5х5"
+        text_of_win_window = "Поздравляем! Вы решили задачку!"
+        text_of_win_window_coins = "Вы получили: "
 
     def English_lang(self):
         global text_of_play_button, text_of_shop_button, text_of_settings_button, text_of_achievements_button, \
             text_of_exit_button, text_of_back_button, text_of_back_to_mm, text_of_language_settings, text_of_resolution_settings, \
-            text_of_tip_button, text_of_tip, text_of_game3x3, text_of_game4x4, text_of_game5x5
+            text_of_tip_button, text_of_tip, text_of_game3x3, text_of_game4x4, text_of_game5x5, text_of_win_window, text_of_win_window_coins
 
         text_of_play_button = "Play"
         text_of_shop_button = "Shop"
@@ -80,6 +85,8 @@ class Localization():
         text_of_game3x3 = "Size 3x3"
         text_of_game4x4 = "Size 4x4"
         text_of_game5x5 = "Size 5x5"
+        text_of_win_window = "Congratulations! You solved the problem!"
+        text_of_win_window_coins = "You got: "
 
 # Перестановка столбцов массива
 def transpose_columns(matrix, col1, col2):
@@ -90,9 +97,73 @@ def transpose_columns(matrix, col1, col2):
 def transpose_rows(matrix, row1, row2):
     matrix[row1], matrix[row2] = matrix[row2], matrix[row1]
 
+# Уменьшение массива
+def resize_array(array, rangeArr):
+    resized_array = [[0] * rangeArr for _ in range(rangeArr)]  # Создаем новый массив размером 3x3, заполненный нулями
+    
+    for i in range(1, len(array[0])-1):
+        for j in range(1, len(array[0])-1):
+            resized_array[i-1][j-1] = array[i][j]  # Копируем элементы из исходного массива
+            
+    return resized_array
+
+# Генерация подсказок на границах
+def generate_array(input_array):
+    n = len(input_array)
+    output_array = [[0] * (n + 2) for _ in range(n + 2)]
+
+    max_visible = 0
+    count_visible = 0
+    # Заполнение левой стороны
+    for i in range(n):
+        for j in range(n):
+            if max_visible < input_array[i][j]:
+                max_visible = input_array[i][j]
+                count_visible += 1
+
+        output_array[i+1][0] = count_visible
+        max_visible = 0
+        count_visible = 0
+
+    # Заполнение правой стороны
+    for i in range(n):
+        for j in range(n, -1, -1):
+            if max_visible < input_array[i][j-1]:
+                max_visible = input_array[i][j-1]
+                count_visible += 1
+
+        output_array[i+1][n+1] = count_visible
+        max_visible = 0
+        count_visible = 0
+
+    # Заполнение нижней стороны
+    for j in range(n):
+        for i in range(n, -1, -1):
+            if max_visible < input_array[i-1][j]:
+                max_visible = input_array[i-1][j]
+                count_visible += 1
+
+        output_array[n+1][j+1] = count_visible
+        max_visible = 0
+        count_visible = 0
+
+    # Заполнение верхней стороны
+    for j in range(n):
+        for i in range(n):
+            if max_visible < input_array[i][j]:
+                max_visible = input_array[i][j]
+                count_visible += 1
+
+        output_array[0][j+1] = count_visible
+        max_visible = 0
+        count_visible = 0
+
+    return output_array
+
 class MySprite(arcade.Sprite):
     def __init__(self, image_file, scale):
         super().__init__(image_file, scale)
+
 
 class Main_Menu(arcade.View):
     def __init__(self):
@@ -100,6 +171,8 @@ class Main_Menu(arcade.View):
         # Create variables here
         self.manager = None
         self.v_box = None
+
+        self.background = arcade.load_texture(f"Product/background_{background_mode}.jpg")
         
 
     # Called when switching to this view
@@ -181,7 +254,9 @@ class Main_Menu(arcade.View):
     # Draw the menu
     def on_draw(self):
         self.clear()
+        arcade.draw_lrwh_rectangle_textured(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, self.background)
         self.manager.draw()
+
 
 class Game_Choose(arcade.View):
     def __init__(self):
@@ -189,6 +264,11 @@ class Game_Choose(arcade.View):
         # Create variables here
         self.manager = None
         self.v_box = None
+
+        self.background = arcade.load_texture(f"Product/background_{background_mode}.jpg")
+
+        self.manager_of_back_button = None
+        self.v_box_of_back_button = None
 
     def setup(self):
         """ This should set up your game and get it ready to play """
@@ -217,11 +297,21 @@ class Game_Choose(arcade.View):
             managerclear(self)
             uimanagerclear(self)
 
+        def on_click_exit_settings(event):
+            game_view = Main_Menu()
+            self.window.show_view(game_view)
+            managerclear(self)
+            uimanagerclear(self)
+
         self.manager = arcade.gui.UIManager()
         self.manager.enable()
 
+        self.manager_of_back_button = arcade.gui.UIManager()
+        self.manager_of_back_button.enable()
+
         # Create a vertical BoxGroup to align buttons
         self.v_box = arcade.gui.UIBoxLayout()
+        self.v_box_of_back_button = arcade.gui.UIBoxLayout()
 
         game3x3 = arcade.gui.UIFlatButton(text=text_of_game3x3, width=200)
         self.v_box.add(game3x3.with_space_around(bottom=20))
@@ -235,17 +325,30 @@ class Game_Choose(arcade.View):
         self.v_box.add(game5x5.with_space_around(bottom=20))
         game5x5.on_click = on_click_game5x5
 
+        exit_settings_button = arcade.gui.UIFlatButton(text=text_of_back_button, width=200)
+        self.v_box_of_back_button.add(exit_settings_button.with_space_around(bottom=20))
+        exit_settings_button.on_click = on_click_exit_settings
+
         self.manager.add(
             arcade.gui.UIAnchorWidget(
                 align_x=0,
                 align_y=0,
                 child=self.v_box)
         )
+        self.manager_of_back_button.add(
+            arcade.gui.UIAnchorWidget(
+                align_x=SCREEN_WIDTH / 2 - 125,
+                align_y=SCREEN_HEIGHT / 2 - 50,
+                child=self.v_box_of_back_button)
+        )
 
     def on_draw(self):
         """ Draw everything for the game. """
         self.clear()
+        arcade.draw_lrwh_rectangle_textured(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, self.background)
         self.manager.draw()
+        self.manager_of_back_button.draw()
+
 
 class Game_3x3(arcade.View):
     def __init__(self):
@@ -254,6 +357,8 @@ class Game_3x3(arcade.View):
         self.manager_of_tip_button = None
         self.manager_of_back_button = None
         self.v_box_of_back_button = None
+
+        self.background = arcade.load_texture(f"Product/background_{background_mode}.jpg")
 
         self.grid_sprite_list = arcade.SpriteList()
         # тоже что {grid_sprite_list}, только на двумерный манер
@@ -267,6 +372,8 @@ class Game_3x3(arcade.View):
             [3,1,2],
             [2,3,1]
         ]
+
+        self.grid_numbers_less = []
 
         global ROW_COUNT
         ROW_COUNT = 5
@@ -294,6 +401,10 @@ class Game_3x3(arcade.View):
         for line in self.grid_generated:
             print(line)
 
+        # Создаем подсказки на границах
+        self.grid_numbers = generate_array(self.grid_generated)
+
+        global grid_mode
         # Создание игрового поля
         for row in range(ROW_COUNT):
             self.grid_sprites.append([])
@@ -301,8 +412,16 @@ class Game_3x3(arcade.View):
             for column in range(COLUMN_COUNT):
                 x = column * (WIDTH + MARGIN) + SCREEN_WIDTH/2 - (WIDTH + MARGIN)*2
                 y = row * (HEIGHT + MARGIN) + SCREEN_HEIGHT/2 - (HEIGHT + MARGIN)*3
-                sprite = MySprite("Product/0.png", 0.6)
-                like_empty_sprite = MySprite("Product/likeempty.png", 0.6)
+                sprite = MySprite(f"Product/0_{grid_mode}.png", 0.6)
+                like_empty_sprite = MySprite("Product/empty.png", 0.6)
+                if row == 0 and self.grid_numbers[row][column] != 0:
+                    like_empty_sprite = MySprite(f"Product/down{self.grid_numbers[row][column]}_{grid_mode}.png", 0.6)
+                if row == ROW_COUNT-1 and self.grid_numbers[row][column] != 0:
+                    like_empty_sprite = MySprite(f"Product/up{self.grid_numbers[row][column]}_{grid_mode}.png", 0.6)
+                if column == 0 and self.grid_numbers[row][column] != 0:
+                    like_empty_sprite = MySprite(f"Product/left{self.grid_numbers[row][column]}_{grid_mode}.png", 0.6)    
+                if column == COLUMN_COUNT-1 and self.grid_numbers[row][column] != 0:
+                    like_empty_sprite = MySprite(f"Product/right{self.grid_numbers[row][column]}_{grid_mode}.png", 0.6)    
                 empty_sprite = MySprite("Product/empty.png", 0.6)
                 sprite.center_x = x
                 sprite.center_y = y
@@ -379,6 +498,8 @@ class Game_3x3(arcade.View):
     def on_draw(self):
         # Отображение элементов
         self.clear()
+
+        arcade.draw_lrwh_rectangle_textured(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, self.background)
 
         self.grid_sprite_list.draw()
         
@@ -392,7 +513,7 @@ class Game_3x3(arcade.View):
 
         # Перевод координат нажатия мышью в элемент на сетке
         # В условии необходимо ставить коэффициент равный генерации сетки+0,5, а в вычислении ячейки ставить коэффициент равный генерации сетки+1,5
-        if x>= ((WIDTH + MARGIN) + SCREEN_WIDTH/2 - (WIDTH + MARGIN)*2.5 + 2) and y >= ((HEIGHT + MARGIN) + SCREEN_HEIGHT/2 - (HEIGHT + MARGIN)*3.5 + 2) and x<= ((WIDTH + MARGIN) + SCREEN_WIDTH/2 + (WIDTH + MARGIN)*0.5 + 2) and y <= ((HEIGHT + MARGIN) + SCREEN_HEIGHT/2 - (HEIGHT + MARGIN)*0.5 + 2):
+        if x>= ((WIDTH + MARGIN) + SCREEN_WIDTH/2 - (WIDTH + MARGIN)*2.4 + 2) and y >= ((HEIGHT + MARGIN) + SCREEN_HEIGHT/2 - (HEIGHT + MARGIN)*3.4 + 2) and x<= ((WIDTH + MARGIN) + SCREEN_WIDTH/2 + (WIDTH + MARGIN)*0.5 + 2) and y <= ((HEIGHT + MARGIN) + SCREEN_HEIGHT/2 - (HEIGHT + MARGIN)*0.5 + 2):
             column = int((x-((WIDTH + MARGIN) + SCREEN_WIDTH/2 - (WIDTH + MARGIN)*3.5 + 4)) // (WIDTH + MARGIN))
             row = int((y-((HEIGHT + MARGIN) + SCREEN_HEIGHT/2 - (HEIGHT + MARGIN)*4.5 + 4)) // (HEIGHT + MARGIN))
 
@@ -406,14 +527,26 @@ class Game_3x3(arcade.View):
             
             for i in range(0, 3):
                 if self.grid_numbers[row][column] == i:
-                    self.grid_sprites[row][column].texture = arcade.load_texture(f"Product/{i+1}.png")
+                    self.grid_sprites[row][column].texture = arcade.load_texture(f"Product/{i+1}_{grid_mode}.png")
                     self.grid_numbers[row][column] = i+1
                     break
                 elif self.grid_numbers[row][column] == 3:
-                    self.grid_sprites[row][column].texture = arcade.load_texture("Product/0.png")
+                    self.grid_sprites[row][column].texture = arcade.load_texture(f"Product/0_{grid_mode}.png")
                     self.grid_numbers[row][column] = 0
                     break
             print(self.grid_numbers)
+
+            # Проверка на правильность
+            self.grid_numbers_less = [row[1:4] for row in self.grid_numbers[1:4]]
+
+            if self.grid_numbers_less == self.grid_generated:
+                game_view = Win_window()
+                self.window.show_view(game_view)
+                managerclear(self)
+                uimanagerclear(self)
+
+            
+            
 
 class Game_4x4(arcade.View):
     def __init__(self):
@@ -423,12 +556,15 @@ class Game_4x4(arcade.View):
         self.manager_of_back_button = None
         self.v_box_of_back_button = None
 
+        self.background = arcade.load_texture(f"Product/background_{background_mode}.jpg")
+
         self.grid_sprite_list = arcade.SpriteList()
         # тоже что {grid_sprite_list}, только на двумерный манер
         self.grid_sprites = []
         # указатель на значения в игровом поле
         self.grid_numbers = []
 
+        # основа сгенерированной сетки
         self.grid_generated = [
             [1,2,3,4],
             [4,1,2,3],
@@ -436,11 +572,14 @@ class Game_4x4(arcade.View):
             [2,3,4,1]
         ]
 
+        self.grid_numbers_less = []
+
         global ROW_COUNT
         ROW_COUNT = 6
         global COLUMN_COUNT
         COLUMN_COUNT = 6
 
+        # Случайная перестановка столбцов
         randomLoopCount = random.randint(1,4)
         for i in range(1, randomLoopCount):
             randomLine1 = random.randint(0,3)
@@ -461,16 +600,26 @@ class Game_4x4(arcade.View):
         for line in self.grid_generated:
             print(line)
 
+        # Создаем подсказки на границах
+        self.grid_numbers = generate_array(self.grid_generated)
 
         # Создание игрового поля
         for row in range(ROW_COUNT):
             self.grid_sprites.append([])
             self.grid_numbers.append([])
             for column in range(COLUMN_COUNT):
-                x = column * (WIDTH + MARGIN) + SCREEN_WIDTH/2 - (WIDTH + MARGIN)
-                y = row * (HEIGHT + MARGIN) + SCREEN_HEIGHT/2 - (HEIGHT + MARGIN)
-                sprite = MySprite("Product/0.png", 0.6)
-                like_empty_sprite = MySprite("Product/likeempty.png", 0.6)
+                x = column * (WIDTH + MARGIN) + SCREEN_WIDTH/2 - (WIDTH + MARGIN)*2.5
+                y = row * (HEIGHT + MARGIN) + SCREEN_HEIGHT/2 - (HEIGHT + MARGIN)*3.5
+                sprite = MySprite(f"Product/0_{grid_mode}.png", 0.6)
+                like_empty_sprite = MySprite("Product/empty.png", 0.6)
+                if row == 0 and self.grid_numbers[row][column] != 0:
+                    like_empty_sprite = MySprite(f"Product/down{self.grid_numbers[row][column]}_{grid_mode}.png", 0.6)
+                if row == ROW_COUNT-1 and self.grid_numbers[row][column] != 0:
+                    like_empty_sprite = MySprite(f"Product/up{self.grid_numbers[row][column]}_{grid_mode}.png", 0.6)
+                if column == 0 and self.grid_numbers[row][column] != 0:
+                    like_empty_sprite = MySprite(f"Product/left{self.grid_numbers[row][column]}_{grid_mode}.png", 0.6)    
+                if column == COLUMN_COUNT-1 and self.grid_numbers[row][column] != 0:
+                    like_empty_sprite = MySprite(f"Product/right{self.grid_numbers[row][column]}_{grid_mode}.png", 0.6)    
                 empty_sprite = MySprite("Product/empty.png", 0.6)
                 sprite.center_x = x
                 sprite.center_y = y
@@ -517,6 +666,8 @@ class Game_4x4(arcade.View):
         self.manager_of_tip_button = arcade.gui.UIManager()
         self.manager_of_tip_button.enable()
 
+        
+
         # Create a vertical BoxGroup to align buttons
         self.v_box_of_back_button = arcade.gui.UIBoxLayout()
         self.v_box_of_tip_button = arcade.gui.UIBoxLayout()
@@ -545,7 +696,7 @@ class Game_4x4(arcade.View):
     def on_draw(self):
         # Отображение элементов
         self.clear()
-
+        arcade.draw_lrwh_rectangle_textured(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, self.background)
         self.grid_sprite_list.draw()
         
         self.manager_of_back_button.draw()
@@ -557,9 +708,10 @@ class Game_4x4(arcade.View):
         # Вызываетя при нажатии на мышь
 
         # Перевод координат нажатия мышью в элемент на сетке
-        if x>= ((WIDTH + MARGIN) + SCREEN_WIDTH/2 - (WIDTH + MARGIN)*2.5 + 4) and y >= ((HEIGHT + MARGIN) + SCREEN_HEIGHT/2 - (HEIGHT + MARGIN)*2.5 + 4):
-            column = int((x-((WIDTH + MARGIN) + SCREEN_WIDTH/2 - (WIDTH + MARGIN)*2.5 + 4)) // (WIDTH + MARGIN))
-            row = int((y-((HEIGHT + MARGIN) + SCREEN_HEIGHT/2 - (HEIGHT + MARGIN)*2.5 + 4)) // (HEIGHT + MARGIN))
+        # В условии необходимо ставить коэффициент равный генерации сетки+0,5, а в вычислении ячейки ставить коэффициент равный генерации сетки+1,5
+        if x>= ((WIDTH + MARGIN) + SCREEN_WIDTH/2 - (WIDTH + MARGIN)*3 + 4) and y >= ((HEIGHT + MARGIN) + SCREEN_HEIGHT/2 - (HEIGHT + MARGIN)*4 + 4) and x<= ((WIDTH + MARGIN) + SCREEN_WIDTH/2 + (WIDTH + MARGIN)*1 + 2) and y <= ((HEIGHT + MARGIN) + SCREEN_HEIGHT/2 + (HEIGHT + MARGIN)*0 + 2):
+            column = int((x-((WIDTH + MARGIN) + SCREEN_WIDTH/2 - (WIDTH + MARGIN)*4 + 4)) // (WIDTH + MARGIN))
+            row = int((y-((HEIGHT + MARGIN) + SCREEN_HEIGHT/2 - (HEIGHT + MARGIN)*5 + 4)) // (HEIGHT + MARGIN))
 
             print(f"Click coordinates: ({x}, {y}). Grid coordinates: ({row}, {column})")
 
@@ -571,14 +723,17 @@ class Game_4x4(arcade.View):
             
             for i in range(0, 4):
                 if self.grid_numbers[row][column] == i:
-                    self.grid_sprites[row][column].texture = arcade.load_texture(f"Product/{i+1}.png")
+                    self.grid_sprites[row][column].texture = arcade.load_texture(f"Product/{i+1}_{grid_mode}.png")
                     self.grid_numbers[row][column] = i+1
                     break
                 elif self.grid_numbers[row][column] == 4:
-                    self.grid_sprites[row][column].texture = arcade.load_texture("Product/0.png")
+                    self.grid_sprites[row][column].texture = arcade.load_texture(f"Product/0_{grid_mode}.png")
                     self.grid_numbers[row][column] = 0
                     break
             print(self.grid_numbers)
+
+            # Проверка на правильность
+            self.grid_numbers_less = self.grid_numbers
 
 
 class Game_5x5(arcade.View):
@@ -589,12 +744,15 @@ class Game_5x5(arcade.View):
         self.manager_of_back_button = None
         self.v_box_of_back_button = None
 
+        self.background = arcade.load_texture(f"Product/background_{background_mode}.jpg")
+
         self.grid_sprite_list = arcade.SpriteList()
         # тоже что {grid_sprite_list}, только на двумерный манер
         self.grid_sprites = []
         # указатель на значения в игровом поле
         self.grid_numbers = []
 
+        # основа сгенерированной сетки
         self.grid_generated = [
             [1,2,3,4,5],
             [5,1,2,3,4],
@@ -603,11 +761,14 @@ class Game_5x5(arcade.View):
             [2,3,4,5,1]
         ]
 
+        self.grid_numbers_less = []
+
         global ROW_COUNT
         ROW_COUNT = 7
         global COLUMN_COUNT
         COLUMN_COUNT = 7
 
+        # Случайная перестановка столбцов
         randomLoopCount = random.randint(1,4)
         for i in range(1, randomLoopCount):
             randomLine1 = random.randint(0,4)
@@ -628,6 +789,8 @@ class Game_5x5(arcade.View):
         for line in self.grid_generated:
             print(line)
 
+        # Создаем подсказки на границах
+        self.grid_numbers = generate_array(self.grid_generated)
 
         # Создание игрового поля
         for row in range(ROW_COUNT):
@@ -636,8 +799,16 @@ class Game_5x5(arcade.View):
             for column in range(COLUMN_COUNT):
                 x = column * (WIDTH + MARGIN) + SCREEN_WIDTH/2 - (WIDTH + MARGIN)*3
                 y = row * (HEIGHT + MARGIN) + SCREEN_HEIGHT/2 - (HEIGHT + MARGIN)*4
-                sprite = MySprite("Product/0.png", 0.6)
-                like_empty_sprite = MySprite("Product/likeempty.png", 0.6)
+                sprite = MySprite(f"Product/0_{grid_mode}.png", 0.6)
+                like_empty_sprite = MySprite("Product/empty.png", 0.6)
+                if row == 0 and self.grid_numbers[row][column] != 0:
+                    like_empty_sprite = MySprite(f"Product/down{self.grid_numbers[row][column]}_{grid_mode}.png", 0.6)
+                if row == ROW_COUNT-1 and self.grid_numbers[row][column] != 0:
+                    like_empty_sprite = MySprite(f"Product/up{self.grid_numbers[row][column]}_{grid_mode}.png", 0.6)
+                if column == 0 and self.grid_numbers[row][column] != 0:
+                    like_empty_sprite = MySprite(f"Product/left{self.grid_numbers[row][column]}_{grid_mode}.png", 0.6)    
+                if column == COLUMN_COUNT-1 and self.grid_numbers[row][column] != 0:
+                    like_empty_sprite = MySprite(f"Product/right{self.grid_numbers[row][column]}_{grid_mode}.png", 0.6)    
                 empty_sprite = MySprite("Product/empty.png", 0.6)
                 sprite.center_x = x
                 sprite.center_y = y
@@ -684,6 +855,8 @@ class Game_5x5(arcade.View):
         self.manager_of_tip_button = arcade.gui.UIManager()
         self.manager_of_tip_button.enable()
 
+        
+
         # Create a vertical BoxGroup to align buttons
         self.v_box_of_back_button = arcade.gui.UIBoxLayout()
         self.v_box_of_tip_button = arcade.gui.UIBoxLayout()
@@ -712,11 +885,12 @@ class Game_5x5(arcade.View):
     def on_draw(self):
         # Отображение элементов
         self.clear()
-
+        arcade.draw_lrwh_rectangle_textured(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, self.background)
         self.grid_sprite_list.draw()
         
         self.manager_of_back_button.draw()
         self.manager_of_tip_button.draw()
+
 
         
 
@@ -724,11 +898,12 @@ class Game_5x5(arcade.View):
         # Вызываетя при нажатии на мышь
 
         # Перевод координат нажатия мышью в элемент на сетке
+        # В условии необходимо ставить коэффициент равный генерации сетки+0,5, а в вычислении ячейки ставить коэффициент равный генерации сетки+1,5
         if x>= ((WIDTH + MARGIN) + SCREEN_WIDTH/2 - (WIDTH + MARGIN)*3.5 + 4) and y >= ((HEIGHT + MARGIN) + SCREEN_HEIGHT/2 - (HEIGHT + MARGIN)*4.5 + 4) and x<= ((WIDTH + MARGIN) + SCREEN_WIDTH/2 + (WIDTH + MARGIN)*1.5 + 2) and y <= ((HEIGHT + MARGIN) + SCREEN_HEIGHT/2 + (HEIGHT + MARGIN)*0.5 + 2):
             column = int((x-((WIDTH + MARGIN) + SCREEN_WIDTH/2 - (WIDTH + MARGIN)*4.5 + 4)) // (WIDTH + MARGIN))
             row = int((y-((HEIGHT + MARGIN) + SCREEN_HEIGHT/2 - (HEIGHT + MARGIN)*5.5 + 4)) // (HEIGHT + MARGIN))
 
-            print(f"Click coordinates: ({x}, {y}). Grid coordinates: ({row}, {column}). Row: {ROW_COUNT}")
+            print(f"Click coordinates: ({x}, {y}). Grid coordinates: ({row}, {column})")
 
         # Make sure we are on-grid. It is possible to click in the upper right
         # corner in the margin and go to a grid location that doesn't exist
@@ -738,14 +913,18 @@ class Game_5x5(arcade.View):
             
             for i in range(0, 5):
                 if self.grid_numbers[row][column] == i:
-                    self.grid_sprites[row][column].texture = arcade.load_texture(f"Product/{i+1}.png")
+                    self.grid_sprites[row][column].texture = arcade.load_texture(f"Product/{i+1}_{grid_mode}.png")
                     self.grid_numbers[row][column] = i+1
                     break
                 elif self.grid_numbers[row][column] == 5:
-                    self.grid_sprites[row][column].texture = arcade.load_texture("Product/0.png")
+                    self.grid_sprites[row][column].texture = arcade.load_texture(f"Product/0_{grid_mode}.png")
                     self.grid_numbers[row][column] = 0
                     break
             print(self.grid_numbers)
+
+            # Проверка на правильность
+            self.grid_numbers_less = self.grid_numbers
+
 
 
 class Shop(arcade.View):
@@ -754,6 +933,8 @@ class Shop(arcade.View):
         # Create variables here
         self.manager = None
         self.v_box = None
+
+        self.background = arcade.load_texture(f"Product/background_{background_mode}.jpg")
 
     def setup(self):
         """ This should set up your game and get it ready to play """
@@ -790,6 +971,7 @@ class Shop(arcade.View):
     def on_draw(self):
         """ Draw everything for the game. """
         self.clear()
+        arcade.draw_lrwh_rectangle_textured(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, self.background)
         self.manager.draw()
 
 
@@ -801,6 +983,8 @@ class Settings_Menu(arcade.View):
         self.manager_of_language = None
         self.v_box = None
         self.v_box_of_language = None
+
+        self.background = arcade.load_texture(f"Product/background_{background_mode}.jpg")
 
     def setup(self):
         """ This should set up your game and get it ready to play """
@@ -866,6 +1050,7 @@ class Settings_Menu(arcade.View):
     def on_draw(self):
         """ Draw everything for the game. """
         self.clear()
+        arcade.draw_lrwh_rectangle_textured(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, self.background)
         arcade.draw_rectangle_filled(SCREEN_WIDTH / 8 + 25, (SCREEN_HEIGHT - 250) / 2 + 25, SCREEN_WIDTH / 4, SCREEN_HEIGHT - 250,
                                      arcade.color.GRAY_BLUE)
         arcade.draw_text(text_of_language_settings, SCREEN_WIDTH / 8 + 25, (SCREEN_HEIGHT + 250) / 2 - 15,
@@ -884,6 +1069,8 @@ class Achievements(arcade.View):
         # Create variables here
         self.manager = None
         self.v_box = None
+
+        self.background = arcade.load_texture(f"Product/background_{background_mode}.jpg")
 
     def setup(self):
         """ This should set up your game and get it ready to play """
@@ -920,7 +1107,60 @@ class Achievements(arcade.View):
     def on_draw(self):
         """ Draw everything for the game. """
         self.clear()
+        arcade.draw_lrwh_rectangle_textured(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, self.background)
         self.manager.draw()
+
+
+class Win_window(arcade.View):
+    def __init__(self):
+        super().__init__()
+        # Create variables here
+        self.manager = None
+        self.v_box = None
+
+        self.background = arcade.load_texture("Product/win_window.jpg")
+
+    def setup(self):
+        """ This should set up your game and get it ready to play """
+        # Replace 'pass' with the code to set up your game
+        pass
+
+    def on_show_view(self):
+        """ Called when switching to this view"""
+        arcade.set_background_color(arcade.color.DARK_BLUE_GRAY)
+
+        def on_click_exit_settings(event):
+            game_view = Main_Menu()
+            self.window.show_view(game_view)
+            managerclear(self)
+            uimanagerclear(self)
+
+        self.manager = arcade.gui.UIManager()
+        self.manager.enable()
+
+        # Create a vertical BoxGroup to align buttons
+        self.v_box = arcade.gui.UIBoxLayout()
+
+        exit_settings_button = arcade.gui.UIFlatButton(text=text_of_back_to_mm, width=400)
+        self.v_box.add(exit_settings_button.with_space_around(bottom=40))
+        exit_settings_button.on_click = on_click_exit_settings
+
+        self.manager.add(
+            arcade.gui.UIAnchorWidget(
+                align_x= 0,
+                align_y= 100,
+                child=self.v_box)
+        )
+
+    def on_draw(self):
+        """ Draw everything for the game. """
+        self.clear()
+        arcade.draw_lrwh_rectangle_textured(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, self.background)
+        self.manager.draw()
+        arcade.draw_text(text_of_win_window, SCREEN_WIDTH / 2, 100,
+                         arcade.color.BLACK, 30, anchor_x="center")
+        arcade.draw_text(f"{text_of_win_window_coins}монеты* монет", SCREEN_WIDTH / 2, 50,
+                         arcade.color.BLACK, 30, anchor_x="center")
 
 
 # Start the program
