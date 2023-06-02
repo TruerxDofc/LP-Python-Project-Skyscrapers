@@ -15,23 +15,19 @@ WIDTH = 60
 HEIGHT = 60
 MARGIN = 2
 
-grid_mode = "default"
-background_mode = "mountain"
-amount_of_coins = 0
-
 
 text_of_play_button = ""; text_of_shop_button = ""; text_of_settings_button = ""
 text_of_achievements_button = ""; text_of_exit_button = ""; text_of_back_button = ""; text_of_back_to_mm = ""
 text_of_language_settings = ""; text_of_resolution_settings = ""
 text_of_tip_button = ""; text_of_tip = ""; text_of_game3x3 = ""; text_of_game4x4 = ""; text_of_game5x5 = ""; text_of_win_window = ""; text_of_win_window_coins = ""
-text_of_win_window_coin = ""; text_of_shop_coins = ""
+text_of_win_window_coin = ""; text_of_shop_coins = ""; text_of_shop_background = ""; text_of_shop_grid = ""
 
 class Localization():
     def Russian_lang(self):
         global text_of_play_button, text_of_shop_button, text_of_settings_button, text_of_achievements_button, \
             text_of_exit_button, text_of_back_button, text_of_back_to_mm, text_of_language_settings, text_of_resolution_settings, \
             text_of_tip_button, text_of_tip, text_of_game3x3, text_of_game4x4, text_of_game5x5, text_of_win_window, text_of_win_window_coins, \
-            text_of_win_window_coin, text_of_shop_coins
+            text_of_win_window_coin, text_of_shop_coins, text_of_shop_background, text_of_shop_grid
 
         text_of_play_button = "Играть"
         text_of_shop_button = "Магазин"
@@ -60,12 +56,14 @@ class Localization():
         text_of_win_window_coins = "Вы получили: "
         text_of_win_window_coin = "монет"
         text_of_shop_coins = "Ваши монеты: "
+        text_of_shop_background = "Фон" 
+        text_of_shop_grid = "Сетка"
 
     def English_lang(self):
         global text_of_play_button, text_of_shop_button, text_of_settings_button, text_of_achievements_button, \
             text_of_exit_button, text_of_back_button, text_of_back_to_mm, text_of_language_settings, text_of_resolution_settings, \
             text_of_tip_button, text_of_tip, text_of_game3x3, text_of_game4x4, text_of_game5x5, text_of_win_window, text_of_win_window_coins, \
-            text_of_win_window_coin, text_of_shop_coins
+            text_of_win_window_coin, text_of_shop_coins, text_of_shop_background, text_of_shop_grid
 
         text_of_play_button = "Play"
         text_of_shop_button = "Shop"
@@ -95,6 +93,82 @@ class Localization():
         text_of_win_window_coins = "You got: "
         text_of_win_window_coin = "coins"
         text_of_shop_coins = "Your coins: "
+        text_of_shop_background = "Background" 
+        text_of_shop_grid = "Grid"
+
+    def German_lang(self):
+        global text_of_play_button, text_of_shop_button, text_of_settings_button, text_of_achievements_button, \
+            text_of_exit_button, text_of_back_button, text_of_back_to_mm, text_of_language_settings, text_of_resolution_settings, \
+            text_of_tip_button, text_of_tip, text_of_game3x3, text_of_game4x4, text_of_game5x5, text_of_win_window, text_of_win_window_coins, \
+            text_of_win_window_coin, text_of_shop_coins, text_of_shop_background, text_of_shop_grid
+
+        text_of_play_button = "Spielen"
+        text_of_shop_button = "Geschäft"
+        text_of_settings_button = "Einstellungen"
+        text_of_achievements_button = "Errungenschaften"
+        text_of_exit_button = "Ausfahrt"
+        text_of_back_button = "Zurück"
+        text_of_back_to_mm = "Zum Hauptmenü"
+        text_of_language_settings = "Sprache"
+        text_of_resolution_settings = "Auflösung"
+        text_of_tip_button = "Tipp"
+        text_of_tip = (
+            "\n"
+            "The goal of the game is to place skyscrapers on all cells of the grid in accordance with the following "
+            "rules: \n\n"
+            "1) The height of skyscrapers varies from 1 to the value of the grid size, for example for a puzzle "
+            "4x4 size skyscrapers height will have values from 1 to 4 \n\n"
+            "2) It is forbidden to place skyscrapers of the same height in each row and each column \n\n"
+            "3) The numbers on the edges of the grid indicate how many skyscrapers you can see, "
+            "if you look in the direction indicated by the arrow \n\n"
+            "Place numbers in each grid cell to indicate the height of the skyscrapers"
+        )
+        text_of_game3x3 = "Format 3x3"
+        text_of_game4x4 = "Format 4x4"
+        text_of_game5x5 = "Format 5x5"
+        text_of_win_window = "Herzlichen Glückwunsch! Sie haben das Problem gelöst!"
+        text_of_win_window_coins = "Sie haben: "
+        text_of_win_window_coin = "Münzen"
+        text_of_shop_coins = "Ihre Münzen: "
+        text_of_shop_background = "Hintergrund" 
+        text_of_shop_grid = "Raster"
+
+    def Franch_lang(self):
+        global text_of_play_button, text_of_shop_button, text_of_settings_button, text_of_achievements_button, \
+            text_of_exit_button, text_of_back_button, text_of_back_to_mm, text_of_language_settings, text_of_resolution_settings, \
+            text_of_tip_button, text_of_tip, text_of_game3x3, text_of_game4x4, text_of_game5x5, text_of_win_window, text_of_win_window_coins, \
+            text_of_win_window_coin, text_of_shop_coins, text_of_shop_background, text_of_shop_grid
+
+        text_of_play_button = "Jouer"
+        text_of_shop_button = "Boutique"
+        text_of_settings_button = "Paramètres"
+        text_of_achievements_button = "Réalisations"
+        text_of_exit_button = "Sortie"
+        text_of_back_button = "Retour"
+        text_of_back_to_mm = "Vers le menu principal"
+        text_of_language_settings = "Langue"
+        text_of_resolution_settings = "Résolution"
+        text_of_tip_button = "Conseil"
+        text_of_tip = (
+            "\n"
+            "The goal of the game is to place skyscrapers on all cells of the grid in accordance with the following "
+            "rules: \n\n"
+            "1) The height of skyscrapers varies from 1 to the value of the grid size, for example for a puzzle "
+            "4x4 size skyscrapers height will have values from 1 to 4 \n\n"
+            "2) It is forbidden to place skyscrapers of the same height in each row and each column \n\n"
+            "3) The numbers on the edges of the grid indicate how many skyscrapers you can see, "
+            "if you look in the direction indicated by the arrow \n\n"
+            "Place numbers in each grid cell to indicate the height of the skyscrapers"
+        )
+        text_of_game3x3 = "Taille 3x3"
+        text_of_game4x4 = "Taille 4x4"
+        text_of_game5x5 = "Taille 5x5"
+        text_of_win_window = "Félicitations ! Vous avez résolu le problème !"
+        text_of_win_window_coins = "Vous avez: "
+        text_of_win_window_coin = "pièces de monnaie"
+        text_of_shop_coins = "Vos pièces: "
+        text_of_shop_background = "Contexte" 
+        text_of_shop_grid = "Grille"
 
 # Перестановка столбцов массива
 def transpose_columns(matrix, col1, col2):
@@ -773,7 +847,7 @@ class Game_4x4(arcade.View):
             if self.grid_numbers_less == self.grid_generated:
                 global amount_of_coins
                 amount_of_coins = 30
-                coin = read_data('Product/meta.txt', 'coins =') + 30
+                coin = int(read_data('Product/meta.txt', 'coins =')) + 30
                 write_data('Product/meta.txt', 'coins =', coin)
                 game_view = Win_window()
                 self.window.show_view(game_view)
@@ -975,7 +1049,7 @@ class Game_5x5(arcade.View):
             if self.grid_numbers_less == self.grid_generated:
                 global amount_of_coins
                 amount_of_coins = 100
-                coin = read_data('Product/meta.txt', 'coins =') + 100
+                coin = int(read_data('Product/meta.txt', 'coins =')) + 100
                 write_data('Product/meta.txt', 'coins =', coin)
                 game_view = Win_window()
                 self.window.show_view(game_view)
@@ -990,6 +1064,12 @@ class Shop(arcade.View):
         # Create variables here
         self.manager = None
         self.v_box = None
+
+        self.manager_background = None
+        self.v_box_background = None
+
+        self.manager_grid = None
+        self.v_box_grid = None
 
         self.background = arcade.load_texture(f"Product/background_{background_mode}.jpg")
 
@@ -1008,15 +1088,101 @@ class Shop(arcade.View):
             managerclear(self)
             uimanagerclear(self)
 
+        def on_click_background_car(event):
+            global background_mode
+            background_mode = "car"
+            write_data('Product/meta.txt', 'background_mode =', "car")
+            game_view = Shop()
+            game_view.setup()
+            self.window.show_view(game_view)
+            managerclear(self)
+            uimanagerclear(self)
+        
+        def on_click_background_mountain(event):
+            global background_mode
+            background_mode = "mountain"
+            write_data('Product/meta.txt', 'background_mode =', "mountain")
+            game_view = Shop()
+            game_view.setup()
+            self.window.show_view(game_view)
+            managerclear(self)
+            uimanagerclear(self)
+        
+        def on_click_background_window(event):
+            global background_mode
+            background_mode = "window"
+            write_data('Product/meta.txt', 'background_mode =', "window")
+            game_view = Shop()
+            game_view.setup()
+            self.window.show_view(game_view)
+            managerclear(self)
+            uimanagerclear(self)
+
+        def on_click_grid_default(event):
+            global grid_mode
+            grid_mode = "default"
+            write_data('Product/meta.txt', 'grid_mode =', "default")
+        
+        def on_click_grid_orange(event):
+            global grid_mode
+            grid_mode = "orange"
+            write_data('Product/meta.txt', 'grid_mode =', "orange")
+        
+        def on_click_grid_pastel(event):
+            global grid_mode
+            grid_mode = "pastel"
+            write_data('Product/meta.txt', 'grid_mode =', "pastel")
+
+        def on_click_grid_pixel(event):
+            global grid_mode
+            grid_mode = "pixel"
+            write_data('Product/meta.txt', 'grid_mode =', "pixel")
+
         self.manager = arcade.gui.UIManager()
         self.manager.enable()
 
+        self.manager_background = arcade.gui.UIManager()
+        self.manager_background.enable()
+
+        self.manager_grid = arcade.gui.UIManager()
+        self.manager_grid.enable()
+
         # Create a vertical BoxGroup to align buttons
         self.v_box = arcade.gui.UIBoxLayout()
+        self.v_box_background = arcade.gui.UIBoxLayout()
+        self.v_box_grid = arcade.gui.UIBoxLayout()
 
         exit_settings_button = arcade.gui.UIFlatButton(text=text_of_back_button, width=200)
         self.v_box.add(exit_settings_button.with_space_around(bottom=20))
         exit_settings_button.on_click = on_click_exit_settings
+
+        background_car_button = arcade.gui.UIFlatButton(text=text_of_back_button, width=200)
+        self.v_box_background.add(background_car_button.with_space_around(bottom=20))
+        background_car_button.on_click = on_click_background_car
+
+        background_mountain_button = arcade.gui.UIFlatButton(text=text_of_back_button, width=200)
+        self.v_box_background.add(background_mountain_button.with_space_around(bottom=20))
+        background_mountain_button.on_click = on_click_background_mountain
+
+        background_window_button = arcade.gui.UIFlatButton(text=text_of_back_button, width=200)
+        self.v_box_background.add(background_window_button.with_space_around(bottom=20))
+        background_window_button.on_click = on_click_background_window
+
+        grid_default_button = arcade.gui.UIFlatButton(text=text_of_back_button, width=200)
+        self.v_box_grid.add(grid_default_button.with_space_around(bottom=20))
+        grid_default_button.on_click = on_click_grid_default
+
+        grid_orange_button = arcade.gui.UIFlatButton(text=text_of_back_button, width=200)
+        self.v_box_grid.add(grid_orange_button.with_space_around(bottom=20))
+        grid_orange_button.on_click = on_click_grid_orange
+
+        grid_pastel_button = arcade.gui.UIFlatButton(text=text_of_back_button, width=200)
+        self.v_box_grid.add(grid_pastel_button.with_space_around(bottom=20))
+        grid_pastel_button.on_click = on_click_grid_pastel
+
+        grid_pixel_button = arcade.gui.UIFlatButton(text=text_of_back_button, width=200)
+        self.v_box_grid.add(grid_pixel_button.with_space_around(bottom=20))
+        grid_pixel_button.on_click = on_click_grid_pixel
 
         self.manager.add(
             arcade.gui.UIAnchorWidget(
@@ -1025,13 +1191,37 @@ class Shop(arcade.View):
                 child=self.v_box)
         )
 
+        self.manager_background.add(
+            arcade.gui.UIAnchorWidget(
+                align_x= -SCREEN_WIDTH/2 + 185,
+                align_y= - 50,
+                child=self.v_box_background)
+        )
+
+        self.manager_grid.add(
+            arcade.gui.UIAnchorWidget(
+                align_x=SCREEN_WIDTH/2 - 185,
+                align_y= - 50,
+                child=self.v_box_grid)
+        )
+
     def on_draw(self):
         """ Draw everything for the game. """
         self.clear()
         arcade.draw_lrwh_rectangle_textured(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, self.background)
-        self.manager.draw()
-        arcade.draw_text(f"{text_of_shop_coins}{read_data('Product/meta.txt', 'coins =')}", SCREEN_WIDTH / 2, SCREEN_HEIGHT - 60,
+        arcade.draw_text(f"{text_of_shop_coins}{read_data('Product/meta.txt', 'coins =')}", SCREEN_WIDTH / 2, SCREEN_HEIGHT/2 + 200,
                          arcade.color.BLACK, 30, anchor_x="center")
+        arcade.draw_rectangle_filled(SCREEN_WIDTH / 8 + 25, (SCREEN_HEIGHT - 120) / 2 + 25, SCREEN_WIDTH / 4, SCREEN_HEIGHT/2,
+                                     arcade.color.GRAY_BLUE)
+        arcade.draw_text(text_of_shop_background, SCREEN_WIDTH / 8 + 25, (SCREEN_HEIGHT + 250) / 2 - 15,
+                         arcade.color.WHITE, 30, anchor_x="center")
+        arcade.draw_rectangle_filled((SCREEN_WIDTH - 180), (SCREEN_HEIGHT - 120) / 2 + 25, SCREEN_WIDTH / 4, SCREEN_HEIGHT/2,
+                                     arcade.color.GRAY_BLUE)
+        arcade.draw_text(text_of_shop_grid, SCREEN_WIDTH - 175, (SCREEN_HEIGHT + 250) / 2 - 15,
+                         arcade.color.WHITE, 30, anchor_x="center")
+        self.manager.draw()
+        self.manager_background.draw()
+        self.manager_grid.draw()
 
 
 class Settings_Menu(arcade.View):
@@ -1074,6 +1264,20 @@ class Settings_Menu(arcade.View):
             game_view.setup()
             self.window.show_view(game_view)
 
+        def on_click_german_language(event):
+            lang = Localization()
+            lang.German_lang()
+            game_view = Settings_Menu()
+            game_view.setup()
+            self.window.show_view(game_view)
+
+        def on_click_franch_language(event):
+            lang = Localization()
+            lang.Franch_lang()
+            game_view = Settings_Menu()
+            game_view.setup()
+            self.window.show_view(game_view)
+
         self.manager1 = arcade.gui.UIManager()
         self.manager1.enable()
         self.manager_of_language = arcade.gui.UIManager()
@@ -1092,6 +1296,12 @@ class Settings_Menu(arcade.View):
         english_language = arcade.gui.UIFlatButton(text="English", width=300)
         self.v_box_of_language.add(english_language.with_space_around(bottom=20))
         english_language.on_click = on_click_english_language
+        german_language = arcade.gui.UIFlatButton(text="Deutsch", width=300)
+        self.v_box_of_language.add(german_language.with_space_around(bottom=20))
+        german_language.on_click = on_click_german_language
+        franch_language = arcade.gui.UIFlatButton(text="Français", width=300)
+        self.v_box_of_language.add(franch_language.with_space_around(bottom=20))
+        franch_language.on_click = on_click_franch_language
 
         self.manager1.add(
             arcade.gui.UIAnchorWidget(
@@ -1102,7 +1312,7 @@ class Settings_Menu(arcade.View):
         self.manager_of_language.add(
             arcade.gui.UIAnchorWidget(
                 align_x=-(SCREEN_WIDTH / 2 - (SCREEN_WIDTH / 8 + 25)),
-                align_y=0,
+                align_y= -75,
                 child=self.v_box_of_language)
         )
 
@@ -1238,6 +1448,10 @@ def managerclear(self):
 
 def uimanagerclear(self):
     self.uimanager.clear()
+
+grid_mode = read_data("Product/meta.txt", "grid_mode = ")
+background_mode = read_data("Product/meta.txt", "background_mode = ")
+amount_of_coins = 0
 
 if __name__ == "__main__":
     main()

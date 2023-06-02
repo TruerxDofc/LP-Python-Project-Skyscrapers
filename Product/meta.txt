@@ -1,3 +1,4 @@
-grid_mode = 
-coins = 10
-background_mode = 
+grid_mode = default
+coins = 0
+background_mode = window
+
