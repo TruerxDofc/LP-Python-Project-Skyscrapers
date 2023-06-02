@@ -1,4 +1,24 @@
-grid_mode = default
-coins = 0
-background_mode = window
+grid_mode = pastel
+coins = 5
+background_mode = car
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

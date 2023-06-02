@@ -20,14 +20,18 @@ text_of_play_button = ""; text_of_shop_button = ""; text_of_settings_button = ""
 text_of_achievements_button = ""; text_of_exit_button = ""; text_of_back_button = ""; text_of_back_to_mm = ""
 text_of_language_settings = ""; text_of_resolution_settings = ""
 text_of_tip_button = ""; text_of_tip = ""; text_of_game3x3 = ""; text_of_game4x4 = ""; text_of_game5x5 = ""; text_of_win_window = ""; text_of_win_window_coins = ""
-text_of_win_window_coin = ""; text_of_shop_coins = ""; text_of_shop_background = ""; text_of_shop_grid = ""
+text_of_win_window_coin = ""; text_of_shop_coins = ""; text_of_shop_background = ""; text_of_shop_grid = "";
+text_of_shop_background_default = ""; text_of_shop_background_car = ""; text_of_shop_background_mountain = ""; text_of_shop_background_window = ""
+text_of_shop_grid_default = ""; text_of_shop_grid_orange = ""; text_of_shop_grid_pastel = ""; text_of_shop_grid_pixel = "";
 
 class Localization():
     def Russian_lang(self):
         global text_of_play_button, text_of_shop_button, text_of_settings_button, text_of_achievements_button, \
             text_of_exit_button, text_of_back_button, text_of_back_to_mm, text_of_language_settings, text_of_resolution_settings, \
             text_of_tip_button, text_of_tip, text_of_game3x3, text_of_game4x4, text_of_game5x5, text_of_win_window, text_of_win_window_coins, \
-            text_of_win_window_coin, text_of_shop_coins, text_of_shop_background, text_of_shop_grid
+            text_of_win_window_coin, text_of_shop_coins, text_of_shop_background, text_of_shop_grid, \
+            text_of_shop_background_default, text_of_shop_background_car, text_of_shop_background_mountain, text_of_shop_background_window, \
+            text_of_shop_grid_default, text_of_shop_grid_orange, text_of_shop_grid_pastel, text_of_shop_grid_pixel
 
         text_of_play_button = "Играть"
         text_of_shop_button = "Магазин"
@@ -58,12 +62,22 @@ class Localization():
         text_of_shop_coins = "Ваши монеты: "
         text_of_shop_background = "Фон" 
         text_of_shop_grid = "Сетка"
+        text_of_shop_background_default = "Простой" 
+        text_of_shop_background_car = "Спорткар"
+        text_of_shop_background_mountain = "Горы"
+        text_of_shop_background_window = "Окно"
+        text_of_shop_grid_default = "Простая"; 
+        text_of_shop_grid_orange = "Фиолетово-оранжевая"
+        text_of_shop_grid_pastel = "Пастельная"
+        text_of_shop_grid_pixel = "Пиксельная";
 
     def English_lang(self):
         global text_of_play_button, text_of_shop_button, text_of_settings_button, text_of_achievements_button, \
             text_of_exit_button, text_of_back_button, text_of_back_to_mm, text_of_language_settings, text_of_resolution_settings, \
             text_of_tip_button, text_of_tip, text_of_game3x3, text_of_game4x4, text_of_game5x5, text_of_win_window, text_of_win_window_coins, \
-            text_of_win_window_coin, text_of_shop_coins, text_of_shop_background, text_of_shop_grid
+            text_of_win_window_coin, text_of_shop_coins, text_of_shop_background, text_of_shop_grid, \
+            text_of_shop_background_default, text_of_shop_background_car, text_of_shop_background_mountain, text_of_shop_background_window, \
+            text_of_shop_grid_default, text_of_shop_grid_orange, text_of_shop_grid_pastel, text_of_shop_grid_pixel
 
         text_of_play_button = "Play"
         text_of_shop_button = "Shop"
@@ -95,12 +109,22 @@ class Localization():
         text_of_shop_coins = "Your coins: "
         text_of_shop_background = "Background" 
         text_of_shop_grid = "Grid"
+        text_of_shop_background_default = "Простой" 
+        text_of_shop_background_car = "Спорткар"
+        text_of_shop_background_mountain = "Горы"
+        text_of_shop_background_window = "Окно"
+        text_of_shop_grid_default = "Простая"; 
+        text_of_shop_grid_orange = "Фиолетово-оранжевая"
+        text_of_shop_grid_pastel = "Пастельная"
+        text_of_shop_grid_pixel = "Пиксельная";
 
     def German_lang(self):
         global text_of_play_button, text_of_shop_button, text_of_settings_button, text_of_achievements_button, \
             text_of_exit_button, text_of_back_button, text_of_back_to_mm, text_of_language_settings, text_of_resolution_settings, \
             text_of_tip_button, text_of_tip, text_of_game3x3, text_of_game4x4, text_of_game5x5, text_of_win_window, text_of_win_window_coins, \
-            text_of_win_window_coin, text_of_shop_coins, text_of_shop_background, text_of_shop_grid
+            text_of_win_window_coin, text_of_shop_coins, text_of_shop_background, text_of_shop_grid, \
+            text_of_shop_background_default, text_of_shop_background_car, text_of_shop_background_mountain, text_of_shop_background_window, \
+            text_of_shop_grid_default, text_of_shop_grid_orange, text_of_shop_grid_pastel, text_of_shop_grid_pixel
 
         text_of_play_button = "Spielen"
         text_of_shop_button = "Geschäft"
@@ -132,12 +156,22 @@ class Localization():
         text_of_shop_coins = "Ihre Münzen: "
         text_of_shop_background = "Hintergrund" 
         text_of_shop_grid = "Raster"
+        text_of_shop_background_default = "Простой" 
+        text_of_shop_background_car = "Спорткар"
+        text_of_shop_background_mountain = "Горы"
+        text_of_shop_background_window = "Окно"
+        text_of_shop_grid_default = "Простая"; 
+        text_of_shop_grid_orange = "Фиолетово-оранжевая"
+        text_of_shop_grid_pastel = "Пастельная"
+        text_of_shop_grid_pixel = "Пиксельная";
 
     def Franch_lang(self):
         global text_of_play_button, text_of_shop_button, text_of_settings_button, text_of_achievements_button, \
             text_of_exit_button, text_of_back_button, text_of_back_to_mm, text_of_language_settings, text_of_resolution_settings, \
             text_of_tip_button, text_of_tip, text_of_game3x3, text_of_game4x4, text_of_game5x5, text_of_win_window, text_of_win_window_coins, \
-            text_of_win_window_coin, text_of_shop_coins, text_of_shop_background, text_of_shop_grid
+            text_of_win_window_coin, text_of_shop_coins, text_of_shop_background, text_of_shop_grid, \
+            text_of_shop_background_default, text_of_shop_background_car, text_of_shop_background_mountain, text_of_shop_background_window, \
+            text_of_shop_grid_default, text_of_shop_grid_orange, text_of_shop_grid_pastel, text_of_shop_grid_pixel
 
         text_of_play_button = "Jouer"
         text_of_shop_button = "Boutique"
@@ -169,6 +203,14 @@ class Localization():
         text_of_shop_coins = "Vos pièces: "
         text_of_shop_background = "Contexte" 
         text_of_shop_grid = "Grille"
+        text_of_shop_background_default = "Простой" 
+        text_of_shop_background_car = "Спорткар"
+        text_of_shop_background_mountain = "Горы"
+        text_of_shop_background_window = "Окно"
+        text_of_shop_grid_default = "Простая"; 
+        text_of_shop_grid_orange = "Фиолетово-оранжевая"
+        text_of_shop_grid_pastel = "Пастельная"
+        text_of_shop_grid_pixel = "Пиксельная";
 
 # Перестановка столбцов массива
 def transpose_columns(matrix, col1, col2):
@@ -1088,6 +1130,16 @@ class Shop(arcade.View):
             managerclear(self)
             uimanagerclear(self)
 
+        def on_click_background_default(event):
+            global background_mode
+            background_mode = "default"
+            write_data('Product/meta.txt', 'background_mode =', "default")
+            game_view = Shop()
+            game_view.setup()
+            self.window.show_view(game_view)
+            managerclear(self)
+            uimanagerclear(self)
+
         def on_click_background_car(event):
             global background_mode
             background_mode = "car"
@@ -1156,31 +1208,35 @@ class Shop(arcade.View):
         self.v_box.add(exit_settings_button.with_space_around(bottom=20))
         exit_settings_button.on_click = on_click_exit_settings
 
-        background_car_button = arcade.gui.UIFlatButton(text=text_of_back_button, width=200)
+        background_default_button = arcade.gui.UIFlatButton(text=text_of_shop_background_default, width=250)
+        self.v_box_background.add(background_default_button.with_space_around(bottom=20))
+        background_default_button.on_click = on_click_background_default
+
+        background_car_button = arcade.gui.UIFlatButton(text=text_of_shop_background_car, width=250)
         self.v_box_background.add(background_car_button.with_space_around(bottom=20))
         background_car_button.on_click = on_click_background_car
 
-        background_mountain_button = arcade.gui.UIFlatButton(text=text_of_back_button, width=200)
+        background_mountain_button = arcade.gui.UIFlatButton(text=text_of_shop_background_mountain, width=250)
         self.v_box_background.add(background_mountain_button.with_space_around(bottom=20))
         background_mountain_button.on_click = on_click_background_mountain
 
-        background_window_button = arcade.gui.UIFlatButton(text=text_of_back_button, width=200)
+        background_window_button = arcade.gui.UIFlatButton(text=text_of_shop_background_window, width=250)
         self.v_box_background.add(background_window_button.with_space_around(bottom=20))
         background_window_button.on_click = on_click_background_window
 
-        grid_default_button = arcade.gui.UIFlatButton(text=text_of_back_button, width=200)
+        grid_default_button = arcade.gui.UIFlatButton(text=text_of_shop_grid_default, width=250)
         self.v_box_grid.add(grid_default_button.with_space_around(bottom=20))
         grid_default_button.on_click = on_click_grid_default
 
-        grid_orange_button = arcade.gui.UIFlatButton(text=text_of_back_button, width=200)
+        grid_orange_button = arcade.gui.UIFlatButton(text=text_of_shop_grid_orange, width=250)
         self.v_box_grid.add(grid_orange_button.with_space_around(bottom=20))
         grid_orange_button.on_click = on_click_grid_orange
 
-        grid_pastel_button = arcade.gui.UIFlatButton(text=text_of_back_button, width=200)
+        grid_pastel_button = arcade.gui.UIFlatButton(text=text_of_shop_grid_pastel, width=250)
         self.v_box_grid.add(grid_pastel_button.with_space_around(bottom=20))
         grid_pastel_button.on_click = on_click_grid_pastel
 
-        grid_pixel_button = arcade.gui.UIFlatButton(text=text_of_back_button, width=200)
+        grid_pixel_button = arcade.gui.UIFlatButton(text=text_of_shop_grid_pixel, width=250)
         self.v_box_grid.add(grid_pixel_button.with_space_around(bottom=20))
         grid_pixel_button.on_click = on_click_grid_pixel
 
@@ -1210,7 +1266,7 @@ class Shop(arcade.View):
         self.clear()
         arcade.draw_lrwh_rectangle_textured(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, self.background)
         arcade.draw_text(f"{text_of_shop_coins}{read_data('Product/meta.txt', 'coins =')}", SCREEN_WIDTH / 2, SCREEN_HEIGHT/2 + 200,
-                         arcade.color.BLACK, 30, anchor_x="center")
+                         arcade.color.PIGGY_PINK, 30, anchor_x="center")
         arcade.draw_rectangle_filled(SCREEN_WIDTH / 8 + 25, (SCREEN_HEIGHT - 120) / 2 + 25, SCREEN_WIDTH / 4, SCREEN_HEIGHT/2,
                                      arcade.color.GRAY_BLUE)
         arcade.draw_text(text_of_shop_background, SCREEN_WIDTH / 8 + 25, (SCREEN_HEIGHT + 250) / 2 - 15,
@@ -1455,5 +1511,3 @@ amount_of_coins = 0
 
 if __name__ == "__main__":
     main()
-
-
