@@ -1,6 +1,42 @@
-grid_mode = pastel
-coins = 5
-background_mode = car
+grid_mode = default
+coins = 3585
+background_mode = default
+
+shop_bg_default = 1
+shop_bg_default_price = 0
+shop_bg_car = 0
+shop_bg_car_price = 100
+shop_bg_mountain = 0
+shop_bg_mountain_price = 350
+shop_bg_window = 0
+shop_bg_window_price = 750
+shop_grid_default = 1
+shop_grid_default_price = 0
+shop_grid_orange = 0
+shop_grid_orange_price = 150
+shop_grid_pastel = 0
+shop_grid_pastel_price = 400
+shop_grid_pixel = 0
+shop_grid_pixel_price = 800
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

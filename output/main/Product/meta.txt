@@ -1,0 +1,30 @@
+grid_mode = default
+coins = 15
+background_mode = mountain
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

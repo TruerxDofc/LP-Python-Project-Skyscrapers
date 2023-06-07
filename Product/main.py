@@ -16,6 +16,20 @@ HEIGHT = 60
 MARGIN = 2
 
 
+custom_style = {
+            "font_name": ("Comic Sans MS", "arial"),
+            "font_size": 16,
+            "font_color": arcade.color.WHITE,
+            "border_width": 1,
+            "border_color": arcade.color.MEDIUM_SKY_BLUE,
+            "bg_color": arcade.color.HAN_BLUE,
+
+            # used if button is pressed
+            "bg_color_pressed": arcade.color.UA_BLUE,
+            "border_color_pressed": arcade.color.MEDIUM_SKY_BLUE,  # also used when hovered
+            "font_color_pressed": arcade.color.WHITE,
+        }
+
 text_of_play_button = ""; text_of_shop_button = ""; text_of_settings_button = ""
 text_of_achievements_button = ""; text_of_exit_button = ""; text_of_back_button = ""; text_of_back_to_mm = ""
 text_of_language_settings = ""; text_of_resolution_settings = ""
@@ -23,6 +37,7 @@ text_of_tip_button = ""; text_of_tip = ""; text_of_game3x3 = ""; text_of_game4x4
 text_of_win_window_coin = ""; text_of_shop_coins = ""; text_of_shop_background = ""; text_of_shop_grid = "";
 text_of_shop_background_default = ""; text_of_shop_background_car = ""; text_of_shop_background_mountain = ""; text_of_shop_background_window = ""
 text_of_shop_grid_default = ""; text_of_shop_grid_orange = ""; text_of_shop_grid_pastel = ""; text_of_shop_grid_pixel = "";
+text_of_shop_buy = ""; text_of_shop_bought = ""; text_buy_status = "";
 
 class Localization():
     def Russian_lang(self):
@@ -31,7 +46,7 @@ class Localization():
             text_of_tip_button, text_of_tip, text_of_game3x3, text_of_game4x4, text_of_game5x5, text_of_win_window, text_of_win_window_coins, \
             text_of_win_window_coin, text_of_shop_coins, text_of_shop_background, text_of_shop_grid, \
             text_of_shop_background_default, text_of_shop_background_car, text_of_shop_background_mountain, text_of_shop_background_window, \
-            text_of_shop_grid_default, text_of_shop_grid_orange, text_of_shop_grid_pastel, text_of_shop_grid_pixel
+            text_of_shop_grid_default, text_of_shop_grid_orange, text_of_shop_grid_pastel, text_of_shop_grid_pixel, text_of_shop_buy, text_of_shop_bought
 
         text_of_play_button = "Играть"
         text_of_shop_button = "Магазин"
@@ -66,10 +81,12 @@ class Localization():
         text_of_shop_background_car = "Спорткар"
         text_of_shop_background_mountain = "Горы"
         text_of_shop_background_window = "Окно"
-        text_of_shop_grid_default = "Простая"; 
+        text_of_shop_grid_default = "Простая"
         text_of_shop_grid_orange = "Фиолетово-оранжевая"
         text_of_shop_grid_pastel = "Пастельная"
-        text_of_shop_grid_pixel = "Пиксельная";
+        text_of_shop_grid_pixel = "Пиксельная"
+        text_of_shop_buy = "Купить"
+        text_of_shop_bought = "Куплено"
 
     def English_lang(self):
         global text_of_play_button, text_of_shop_button, text_of_settings_button, text_of_achievements_button, \
@@ -77,7 +94,7 @@ class Localization():
             text_of_tip_button, text_of_tip, text_of_game3x3, text_of_game4x4, text_of_game5x5, text_of_win_window, text_of_win_window_coins, \
             text_of_win_window_coin, text_of_shop_coins, text_of_shop_background, text_of_shop_grid, \
             text_of_shop_background_default, text_of_shop_background_car, text_of_shop_background_mountain, text_of_shop_background_window, \
-            text_of_shop_grid_default, text_of_shop_grid_orange, text_of_shop_grid_pastel, text_of_shop_grid_pixel
+            text_of_shop_grid_default, text_of_shop_grid_orange, text_of_shop_grid_pastel, text_of_shop_grid_pixel, text_of_shop_buy, text_of_shop_bought
 
         text_of_play_button = "Play"
         text_of_shop_button = "Shop"
@@ -109,14 +126,17 @@ class Localization():
         text_of_shop_coins = "Your coins: "
         text_of_shop_background = "Background" 
         text_of_shop_grid = "Grid"
-        text_of_shop_background_default = "Простой" 
-        text_of_shop_background_car = "Спорткар"
-        text_of_shop_background_mountain = "Горы"
-        text_of_shop_background_window = "Окно"
-        text_of_shop_grid_default = "Простая"; 
-        text_of_shop_grid_orange = "Фиолетово-оранжевая"
-        text_of_shop_grid_pastel = "Пастельная"
-        text_of_shop_grid_pixel = "Пиксельная";
+        text_of_shop_background_default = "Simple" 
+        text_of_shop_background_car = "Sportscar"
+        text_of_shop_background_mountain = "Mountain"
+        text_of_shop_background_window = "Window"
+        text_of_shop_grid_default = "Simple"; 
+        text_of_shop_grid_orange = "Purple and Orange"
+        text_of_shop_grid_pastel = "Pastel"
+        text_of_shop_grid_pixel = "Pixel";
+        text_of_shop_buy = "Buy"; 
+        text_of_shop_bought = "Bought";
+    
 
     def German_lang(self):
         global text_of_play_button, text_of_shop_button, text_of_settings_button, text_of_achievements_button, \
@@ -124,7 +144,7 @@ class Localization():
             text_of_tip_button, text_of_tip, text_of_game3x3, text_of_game4x4, text_of_game5x5, text_of_win_window, text_of_win_window_coins, \
             text_of_win_window_coin, text_of_shop_coins, text_of_shop_background, text_of_shop_grid, \
             text_of_shop_background_default, text_of_shop_background_car, text_of_shop_background_mountain, text_of_shop_background_window, \
-            text_of_shop_grid_default, text_of_shop_grid_orange, text_of_shop_grid_pastel, text_of_shop_grid_pixel
+            text_of_shop_grid_default, text_of_shop_grid_orange, text_of_shop_grid_pastel, text_of_shop_grid_pixel, text_of_shop_buy, text_of_shop_bought
 
         text_of_play_button = "Spielen"
         text_of_shop_button = "Geschäft"
@@ -138,14 +158,13 @@ class Localization():
         text_of_tip_button = "Tipp"
         text_of_tip = (
             "\n"
-            "The goal of the game is to place skyscrapers on all cells of the grid in accordance with the following "
-            "rules: \n\n"
-            "1) The height of skyscrapers varies from 1 to the value of the grid size, for example for a puzzle "
-            "4x4 size skyscrapers height will have values from 1 to 4 \n\n"
-            "2) It is forbidden to place skyscrapers of the same height in each row and each column \n\n"
-            "3) The numbers on the edges of the grid indicate how many skyscrapers you can see, "
-            "if you look in the direction indicated by the arrow \n\n"
-            "Place numbers in each grid cell to indicate the height of the skyscrapers"
+            "Ziel des Spiels ist es, Wolkenkratzer auf allen Zellen des Gitters zu platzieren, wobei folgende Regeln zu beachten sind: \n\n"
+            "1) Die Höhe der Wolkenkratzer variiert von 1 bis zum Wert der Gittergröße, z.B. für ein "
+            "4x4 großes Puzzle hat die Höhe der Wolkenkratzer Werte von 1 bis 4 \n\n"
+            "2) Es ist verboten, in jeder Zeile und jeder Spalte Wolkenkratzer mit der gleichen Höhe zu platzieren \n\n"
+            "3) Die Zahlen an den Rändern des Gitters geben an, wie viele Wolkenkratzer du sehen kannst, "
+            "wie viele Wolkenkratzer du sehen kannst, wenn du in die durch den Pfeil angegebene Richtung schaust \n\n"
+            "Setze Zahlen in jede Gitterzelle, um die Höhe der Wolkenkratzer anzugeben"
         )
         text_of_game3x3 = "Format 3x3"
         text_of_game4x4 = "Format 4x4"
@@ -156,14 +175,16 @@ class Localization():
         text_of_shop_coins = "Ihre Münzen: "
         text_of_shop_background = "Hintergrund" 
         text_of_shop_grid = "Raster"
-        text_of_shop_background_default = "Простой" 
-        text_of_shop_background_car = "Спорткар"
-        text_of_shop_background_mountain = "Горы"
-        text_of_shop_background_window = "Окно"
-        text_of_shop_grid_default = "Простая"; 
-        text_of_shop_grid_orange = "Фиолетово-оранжевая"
-        text_of_shop_grid_pastel = "Пастельная"
-        text_of_shop_grid_pixel = "Пиксельная";
+        text_of_shop_background_default = "Einfach" 
+        text_of_shop_background_car = "Sportwagen"
+        text_of_shop_background_mountain = "Berg"
+        text_of_shop_background_window = "Fenster"
+        text_of_shop_grid_default = "Einfach"
+        text_of_shop_grid_orange = "Lila und Orange"
+        text_of_shop_grid_pastel = "Pastell"
+        text_of_shop_grid_pixel = "Pixel"
+        text_of_shop_buy = "Kaufen" 
+        text_of_shop_bought = "Gekauft bei"
 
     def Franch_lang(self):
         global text_of_play_button, text_of_shop_button, text_of_settings_button, text_of_achievements_button, \
@@ -171,7 +192,7 @@ class Localization():
             text_of_tip_button, text_of_tip, text_of_game3x3, text_of_game4x4, text_of_game5x5, text_of_win_window, text_of_win_window_coins, \
             text_of_win_window_coin, text_of_shop_coins, text_of_shop_background, text_of_shop_grid, \
             text_of_shop_background_default, text_of_shop_background_car, text_of_shop_background_mountain, text_of_shop_background_window, \
-            text_of_shop_grid_default, text_of_shop_grid_orange, text_of_shop_grid_pastel, text_of_shop_grid_pixel
+            text_of_shop_grid_default, text_of_shop_grid_orange, text_of_shop_grid_pastel, text_of_shop_grid_pixel, text_of_shop_buy, text_of_shop_bought
 
         text_of_play_button = "Jouer"
         text_of_shop_button = "Boutique"
@@ -185,14 +206,13 @@ class Localization():
         text_of_tip_button = "Conseil"
         text_of_tip = (
             "\n"
-            "The goal of the game is to place skyscrapers on all cells of the grid in accordance with the following "
-            "rules: \n\n"
-            "1) The height of skyscrapers varies from 1 to the value of the grid size, for example for a puzzle "
-            "4x4 size skyscrapers height will have values from 1 to 4 \n\n"
-            "2) It is forbidden to place skyscrapers of the same height in each row and each column \n\n"
-            "3) The numbers on the edges of the grid indicate how many skyscrapers you can see, "
-            "if you look in the direction indicated by the arrow \n\n"
-            "Place numbers in each grid cell to indicate the height of the skyscrapers"
+            "Le but du jeu est de placer des gratte-ciel sur toutes les cellules de la grille en respectant les règles suivantes: \n\n"
+            "1) La hauteur des gratte-ciel varie de 1 à la valeur de la taille de la grille, "
+            "par exemple pour un puzzle de taille 4x4 la hauteur des gratte-ciel aura des valeurs de 1 à 4 \n\n"
+            "2) Il est interdit de placer des gratte-ciel de la même hauteur dans chaque ligne et dans chaque colonne. \n\n"
+            "3) Les chiffres sur les bords de la grille indiquent le nombre de gratte-ciel "
+            "que vous pouvez voir si vous regardez dans la direction indiquée par la flèche \n\n"
+            "Placez des chiffres dans chaque cellule de la grille pour indiquer la hauteur des gratte-ciel"
         )
         text_of_game3x3 = "Taille 3x3"
         text_of_game4x4 = "Taille 4x4"
@@ -203,14 +223,16 @@ class Localization():
         text_of_shop_coins = "Vos pièces: "
         text_of_shop_background = "Contexte" 
         text_of_shop_grid = "Grille"
-        text_of_shop_background_default = "Простой" 
-        text_of_shop_background_car = "Спорткар"
-        text_of_shop_background_mountain = "Горы"
-        text_of_shop_background_window = "Окно"
-        text_of_shop_grid_default = "Простая"; 
-        text_of_shop_grid_orange = "Фиолетово-оранжевая"
-        text_of_shop_grid_pastel = "Пастельная"
-        text_of_shop_grid_pixel = "Пиксельная";
+        text_of_shop_background_default = "Simple" 
+        text_of_shop_background_car = "Voiture de sport"
+        text_of_shop_background_mountain = "Montagne"
+        text_of_shop_background_window = "Fenêtre"
+        text_of_shop_grid_default = "Simple"
+        text_of_shop_grid_orange = "Pourpre et orange"
+        text_of_shop_grid_pastel = "Pastel"
+        text_of_shop_grid_pixel = "Pixel"
+        text_of_shop_buy = "Acheter"
+        text_of_shop_bought = "Acheté à"
 
 # Перестановка столбцов массива
 def transpose_columns(matrix, col1, col2):
@@ -303,7 +325,8 @@ def read_data(file_name, word):
             if word in line:
                 data = re.search(r'{}(.*)'.format(word), line).group(1)
                 return data.strip()
-            
+        
+
 
 class MySprite(arcade.Sprite):
     def __init__(self, image_file, scale):
@@ -365,19 +388,19 @@ class Main_Menu(arcade.View):
         self.v_box = arcade.gui.UIBoxLayout()
 
         # Create the buttons
-        start_button = arcade.gui.UIFlatButton(text=text_of_play_button, width=200)
+        start_button = arcade.gui.UIFlatButton(text=text_of_play_button, width=200, style=custom_style)
         self.v_box.add(start_button.with_space_around(bottom=20))
 
-        shop_button = arcade.gui.UIFlatButton(text=text_of_shop_button, width=200)
+        shop_button = arcade.gui.UIFlatButton(text=text_of_shop_button, width=200, style=custom_style)
         self.v_box.add(shop_button.with_space_around(bottom=20))
 
-        settings_button = arcade.gui.UIFlatButton(text=text_of_settings_button, width=200)
+        settings_button = arcade.gui.UIFlatButton(text=text_of_settings_button, width=200, style=custom_style)
         self.v_box.add(settings_button.with_space_around(bottom=20))
 
-        achievements_button = arcade.gui.UIFlatButton(text=text_of_achievements_button, width=200)
+        achievements_button = arcade.gui.UIFlatButton(text=text_of_achievements_button, width=200, style=custom_style)
         self.v_box.add(achievements_button.with_space_around(bottom=20))
 
-        quit_button = arcade.gui.UIFlatButton(text=text_of_exit_button, width=200)
+        quit_button = arcade.gui.UIFlatButton(text=text_of_exit_button, width=200, style=custom_style)
         self.v_box.add(quit_button.with_space_around(bottom=20))
 
         # Method for handling click events,
@@ -458,19 +481,19 @@ class Game_Choose(arcade.View):
         self.v_box = arcade.gui.UIBoxLayout()
         self.v_box_of_back_button = arcade.gui.UIBoxLayout()
 
-        game3x3 = arcade.gui.UIFlatButton(text=text_of_game3x3, width=200)
+        game3x3 = arcade.gui.UIFlatButton(text=text_of_game3x3, width=200, style=custom_style)
         self.v_box.add(game3x3.with_space_around(bottom=20))
         game3x3.on_click = on_click_game3x3
 
-        game4x4 = arcade.gui.UIFlatButton(text=text_of_game4x4, width=200)
+        game4x4 = arcade.gui.UIFlatButton(text=text_of_game4x4, width=200, style=custom_style)
         self.v_box.add(game4x4.with_space_around(bottom=20))
         game4x4.on_click = on_click_game4x4
 
-        game5x5 = arcade.gui.UIFlatButton(text=text_of_game5x5, width=200)
+        game5x5 = arcade.gui.UIFlatButton(text=text_of_game5x5, width=200, style=custom_style)
         self.v_box.add(game5x5.with_space_around(bottom=20))
         game5x5.on_click = on_click_game5x5
 
-        exit_settings_button = arcade.gui.UIFlatButton(text=text_of_back_button, width=200)
+        exit_settings_button = arcade.gui.UIFlatButton(text=text_of_back_button, width=200, style=custom_style)
         self.v_box_of_back_button.add(exit_settings_button.with_space_around(bottom=20))
         exit_settings_button.on_click = on_click_exit_settings
 
@@ -602,7 +625,7 @@ class Game_3x3(arcade.View):
         def on_click_tip(event):
             message_box = arcade.gui.UIMessageBox(
                 width=400,
-                height=400,
+                height=450,
                 message_text= text_of_tip,
                buttons=["Ok"]
             )
@@ -619,11 +642,11 @@ class Game_3x3(arcade.View):
         self.v_box_of_back_button = arcade.gui.UIBoxLayout()
         self.v_box_of_tip_button = arcade.gui.UIBoxLayout()
 
-        exit_game_button = arcade.gui.UIFlatButton(text=text_of_back_to_mm, width=200)
+        exit_game_button = arcade.gui.UIFlatButton(text=text_of_back_to_mm, width=200, style=custom_style)
         self.v_box_of_back_button.add(exit_game_button.with_space_around(bottom=20))
         exit_game_button.on_click = on_click_exit_to_mm
 
-        tip_game_button = arcade.gui.UIFlatButton(text=text_of_tip_button, width=200)
+        tip_game_button = arcade.gui.UIFlatButton(text=text_of_tip_button, width=200, style=custom_style)
         self.v_box_of_tip_button.add(tip_game_button.with_space_around(bottom=20))
         tip_game_button.on_click = on_click_tip
 
@@ -693,9 +716,7 @@ class Game_3x3(arcade.View):
                 self.window.show_view(game_view)
                 managerclear(self)
                 uimanagerclear(self)
-
-            
-            
+     
 
 class Game_4x4(arcade.View):
     def __init__(self):
@@ -804,7 +825,7 @@ class Game_4x4(arcade.View):
         def on_click_tip(event):
             message_box = arcade.gui.UIMessageBox(
                 width=400,
-                height=400,
+                height=450,
                 message_text= text_of_tip,
                buttons=["Ok"]
             )
@@ -821,11 +842,11 @@ class Game_4x4(arcade.View):
         self.v_box_of_back_button = arcade.gui.UIBoxLayout()
         self.v_box_of_tip_button = arcade.gui.UIBoxLayout()
 
-        exit_game_button = arcade.gui.UIFlatButton(text=text_of_back_to_mm, width=200)
+        exit_game_button = arcade.gui.UIFlatButton(text=text_of_back_to_mm, width=200, style=custom_style)
         self.v_box_of_back_button.add(exit_game_button.with_space_around(bottom=20))
         exit_game_button.on_click = on_click_exit_to_mm
 
-        tip_game_button = arcade.gui.UIFlatButton(text=text_of_tip_button, width=200)
+        tip_game_button = arcade.gui.UIFlatButton(text=text_of_tip_button, width=200, style=custom_style)
         self.v_box_of_tip_button.add(tip_game_button.with_space_around(bottom=20))
         tip_game_button.on_click = on_click_tip
 
@@ -1005,7 +1026,7 @@ class Game_5x5(arcade.View):
         def on_click_tip(event):
             message_box = arcade.gui.UIMessageBox(
                 width=400,
-                height=400,
+                height=450,
                 message_text= text_of_tip,
                buttons=["Ok"]
             )
@@ -1022,11 +1043,11 @@ class Game_5x5(arcade.View):
         self.v_box_of_back_button = arcade.gui.UIBoxLayout()
         self.v_box_of_tip_button = arcade.gui.UIBoxLayout()
 
-        exit_game_button = arcade.gui.UIFlatButton(text=text_of_back_to_mm, width=200)
+        exit_game_button = arcade.gui.UIFlatButton(text=text_of_back_to_mm, width=200, style=custom_style)
         self.v_box_of_back_button.add(exit_game_button.with_space_around(bottom=20))
         exit_game_button.on_click = on_click_exit_to_mm
 
-        tip_game_button = arcade.gui.UIFlatButton(text=text_of_tip_button, width=200)
+        tip_game_button = arcade.gui.UIFlatButton(text=text_of_tip_button, width=200, style=custom_style)
         self.v_box_of_tip_button.add(tip_game_button.with_space_around(bottom=20))
         tip_game_button.on_click = on_click_tip
 
@@ -1099,7 +1120,6 @@ class Game_5x5(arcade.View):
                 uimanagerclear(self)
 
 
-
 class Shop(arcade.View):
     def __init__(self):
         super().__init__()
@@ -1113,6 +1133,12 @@ class Shop(arcade.View):
         self.manager_grid = None
         self.v_box_grid = None
 
+        self.manager_buy_bg = None
+        self.v_box_buy_bg = None
+
+        self.manager_buy_grid = None
+        self.v_box_buy_grid = None
+
         self.background = arcade.load_texture(f"Product/background_{background_mode}.jpg")
 
     def setup(self):
@@ -1124,6 +1150,15 @@ class Shop(arcade.View):
         """ Called when switching to this view"""
         arcade.set_background_color(arcade.color.DARK_BLUE_GRAY)
 
+        # Проверка статуса покупки
+        def buy_status(object):
+            check = read_data('Product/meta.txt', f'shop_{object} =')
+            global text_buy_status
+            if check == '0':
+                text_buy_status = text_of_shop_buy
+            if check == '1':
+                text_buy_status = text_of_shop_bought
+
         def on_click_exit_settings(event):
             game_view = Main_Menu()
             self.window.show_view(game_view)
@@ -1131,64 +1166,174 @@ class Shop(arcade.View):
             uimanagerclear(self)
 
         def on_click_background_default(event):
-            global background_mode
-            background_mode = "default"
-            write_data('Product/meta.txt', 'background_mode =', "default")
-            game_view = Shop()
-            game_view.setup()
-            self.window.show_view(game_view)
-            managerclear(self)
-            uimanagerclear(self)
+            if read_data('Product/meta.txt', f'shop_bg_default =') == '1':
+                global background_mode
+                background_mode = "default"
+                write_data('Product/meta.txt', 'background_mode =', "default")
+                game_view = Shop()
+                game_view.setup()
+                self.window.show_view(game_view)
+                managerclear(self)
+                uimanagerclear(self)
 
         def on_click_background_car(event):
-            global background_mode
-            background_mode = "car"
-            write_data('Product/meta.txt', 'background_mode =', "car")
-            game_view = Shop()
-            game_view.setup()
-            self.window.show_view(game_view)
-            managerclear(self)
-            uimanagerclear(self)
+            if read_data('Product/meta.txt', f'shop_bg_car =') == '1':
+                global background_mode
+                background_mode = "car"
+                write_data('Product/meta.txt', 'background_mode =', "car")
+                game_view = Shop()
+                game_view.setup()
+                self.window.show_view(game_view)
+                managerclear(self)
+                uimanagerclear(self)
         
         def on_click_background_mountain(event):
-            global background_mode
-            background_mode = "mountain"
-            write_data('Product/meta.txt', 'background_mode =', "mountain")
-            game_view = Shop()
-            game_view.setup()
-            self.window.show_view(game_view)
-            managerclear(self)
-            uimanagerclear(self)
+            if read_data('Product/meta.txt', f'shop_bg_mountain =') == '1':
+                global background_mode
+                background_mode = "mountain"
+                write_data('Product/meta.txt', 'background_mode =', "mountain")
+                game_view = Shop()
+                game_view.setup()
+                self.window.show_view(game_view)
+                managerclear(self)
+                uimanagerclear(self)
         
         def on_click_background_window(event):
-            global background_mode
-            background_mode = "window"
-            write_data('Product/meta.txt', 'background_mode =', "window")
-            game_view = Shop()
-            game_view.setup()
-            self.window.show_view(game_view)
-            managerclear(self)
-            uimanagerclear(self)
+            if read_data('Product/meta.txt', f'shop_bg_window =') == '1':    
+                global background_mode
+                background_mode = "window"
+                write_data('Product/meta.txt', 'background_mode =', "window")
+                game_view = Shop()
+                game_view.setup()
+                self.window.show_view(game_view)
+                managerclear(self)
+                uimanagerclear(self)
 
         def on_click_grid_default(event):
-            global grid_mode
-            grid_mode = "default"
-            write_data('Product/meta.txt', 'grid_mode =', "default")
+            if read_data('Product/meta.txt', f'shop_grid_default =') == '1':
+                global grid_mode
+                grid_mode = "default"
+                write_data('Product/meta.txt', 'grid_mode =', "default")
         
         def on_click_grid_orange(event):
-            global grid_mode
-            grid_mode = "orange"
-            write_data('Product/meta.txt', 'grid_mode =', "orange")
+            if read_data('Product/meta.txt', f'shop_grid_orange =') == '1':
+                global grid_mode
+                grid_mode = "orange"
+                write_data('Product/meta.txt', 'grid_mode =', "orange")
         
         def on_click_grid_pastel(event):
-            global grid_mode
-            grid_mode = "pastel"
-            write_data('Product/meta.txt', 'grid_mode =', "pastel")
+            if read_data('Product/meta.txt', f'shop_grid_pastel =') == '1':
+                global grid_mode
+                grid_mode = "pastel"
+                write_data('Product/meta.txt', 'grid_mode =', "pastel")
 
         def on_click_grid_pixel(event):
-            global grid_mode
-            grid_mode = "pixel"
-            write_data('Product/meta.txt', 'grid_mode =', "pixel")
+            if read_data('Product/meta.txt', f'shop_grid_pixel =') == '1':
+                global grid_mode
+                grid_mode = "pixel"
+                write_data('Product/meta.txt', 'grid_mode =', "pixel")
+        
+        def on_click_bg_default_buy(event):
+            price = 0
+            coin = int(read_data('Product/meta.txt', 'coins ='))
+            if coin >= price and buy_status('bg_default') == '0':
+                coin -= price
+                write_data('Product/meta.txt', 'coins =', coin)
+                write_data('Product/meta.txt', 'shop_bg_default =', 1)
+
+        def on_click_bg_car_buy(event):
+            price = 100
+            coin = int(read_data('Product/meta.txt', 'coins ='))
+            if coin >= price and read_data('Product/meta.txt', f'shop_bg_car =') == '0':
+                coin -= price
+                write_data('Product/meta.txt', 'coins =', coin)
+                write_data('Product/meta.txt', 'shop_bg_car =', 1)
+                game_view = Shop()
+                game_view.setup()
+                self.window.show_view(game_view)
+                managerclear(self)
+                uimanagerclear(self)
+
+        def on_click_bg_mountain_buy(event):
+            price = 350
+            coin = int(read_data('Product/meta.txt', 'coins ='))
+            if coin >= price and read_data('Product/meta.txt', f'shop_bg_mountain =') == '0':
+                coin -= price
+                write_data('Product/meta.txt', 'coins =', coin)
+                write_data('Product/meta.txt', 'shop_bg_mountain =', 1)
+                game_view = Shop()
+                game_view.setup()
+                self.window.show_view(game_view)
+                managerclear(self)
+                uimanagerclear(self)
+
+        def on_click_bg_window_buy(event):
+            price = 750
+            coin = int(read_data('Product/meta.txt', 'coins ='))
+            if coin >= price and read_data('Product/meta.txt', f'shop_bg_window =') == '0':
+                coin -= price
+                write_data('Product/meta.txt', 'coins =', coin)
+                write_data('Product/meta.txt', 'shop_bg_window =', 1)
+                game_view = Shop()
+                game_view.setup()
+                self.window.show_view(game_view)
+                managerclear(self)
+                uimanagerclear(self)
+
+        def on_click_grid_default_buy(event):
+            price = 0
+            coin = int(read_data('Product/meta.txt', 'coins ='))
+            if coin >= price and read_data('Product/meta.txt', f'shop_grid_default =') == '0':
+                coin -= price
+                write_data('Product/meta.txt', 'coins =', coin)
+                write_data('Product/meta.txt', 'shop_grid_default =', 1)
+                game_view = Shop()
+                game_view.setup()
+                self.window.show_view(game_view)
+                managerclear(self)
+                uimanagerclear(self)
+        
+        def on_click_grid_orange_buy(event):
+            price = 150
+            coin = int(read_data('Product/meta.txt', 'coins ='))
+            if coin >= price and read_data('Product/meta.txt', f'shop_grid_orange =') == '0':
+                coin -= price
+                write_data('Product/meta.txt', 'coins =', coin)
+                write_data('Product/meta.txt', 'shop_grid_orange =', 1)
+                game_view = Shop()
+                game_view.setup()
+                self.window.show_view(game_view)
+                managerclear(self)
+                uimanagerclear(self)
+        
+        def on_click_grid_pastel_buy(event):
+            price = 400
+            coin = int(read_data('Product/meta.txt', 'coins ='))
+            if coin >= price and read_data('Product/meta.txt', f'shop_grid_pastel =') == '0':
+                coin -= price
+                write_data('Product/meta.txt', 'coins =', coin)
+                write_data('Product/meta.txt', 'shop_grid_pastel =', 1)
+                game_view = Shop()
+                game_view.setup()
+                self.window.show_view(game_view)
+                managerclear(self)
+                uimanagerclear(self)
+        
+        def on_click_grid_pixel_buy(event):
+            price = 800
+            coin = int(read_data('Product/meta.txt', 'coins ='))
+            if coin >= price and read_data('Product/meta.txt', f'shop_grid_pixel =') == '0':
+                coin -= price
+                write_data('Product/meta.txt', 'coins =', coin)
+                write_data('Product/meta.txt', 'shop_grid_pixel =', 1)
+                game_view = Shop()
+                game_view.setup()
+                self.window.show_view(game_view)
+                managerclear(self)
+                uimanagerclear(self)
+
+
+
 
         self.manager = arcade.gui.UIManager()
         self.manager.enable()
@@ -1199,46 +1344,96 @@ class Shop(arcade.View):
         self.manager_grid = arcade.gui.UIManager()
         self.manager_grid.enable()
 
+        self.manager_buy_bg = arcade.gui.UIManager()
+        self.manager_buy_bg.enable()
+        
+        self.manager_buy_grid = arcade.gui.UIManager()
+        self.manager_buy_grid.enable()
+
         # Create a vertical BoxGroup to align buttons
         self.v_box = arcade.gui.UIBoxLayout()
         self.v_box_background = arcade.gui.UIBoxLayout()
         self.v_box_grid = arcade.gui.UIBoxLayout()
+        self.v_box_buy_bg = arcade.gui.UIBoxLayout()
+        self.v_box_buy_grid = arcade.gui.UIBoxLayout()
 
-        exit_settings_button = arcade.gui.UIFlatButton(text=text_of_back_button, width=200)
+        exit_settings_button = arcade.gui.UIFlatButton(text=text_of_back_button, width=200, style=custom_style)
         self.v_box.add(exit_settings_button.with_space_around(bottom=20))
         exit_settings_button.on_click = on_click_exit_settings
 
-        background_default_button = arcade.gui.UIFlatButton(text=text_of_shop_background_default, width=250)
+        background_default_button = arcade.gui.UIFlatButton(text=text_of_shop_background_default, width=250, style=custom_style)
         self.v_box_background.add(background_default_button.with_space_around(bottom=20))
         background_default_button.on_click = on_click_background_default
 
-        background_car_button = arcade.gui.UIFlatButton(text=text_of_shop_background_car, width=250)
+        background_car_button = arcade.gui.UIFlatButton(text=text_of_shop_background_car, width=250, style=custom_style)
         self.v_box_background.add(background_car_button.with_space_around(bottom=20))
         background_car_button.on_click = on_click_background_car
 
-        background_mountain_button = arcade.gui.UIFlatButton(text=text_of_shop_background_mountain, width=250)
+        background_mountain_button = arcade.gui.UIFlatButton(text=text_of_shop_background_mountain, width=250, style=custom_style)
         self.v_box_background.add(background_mountain_button.with_space_around(bottom=20))
         background_mountain_button.on_click = on_click_background_mountain
 
-        background_window_button = arcade.gui.UIFlatButton(text=text_of_shop_background_window, width=250)
+        background_window_button = arcade.gui.UIFlatButton(text=text_of_shop_background_window, width=250, style=custom_style)
         self.v_box_background.add(background_window_button.with_space_around(bottom=20))
         background_window_button.on_click = on_click_background_window
 
-        grid_default_button = arcade.gui.UIFlatButton(text=text_of_shop_grid_default, width=250)
+        grid_default_button = arcade.gui.UIFlatButton(text=text_of_shop_grid_default, width=250, style=custom_style)
         self.v_box_grid.add(grid_default_button.with_space_around(bottom=20))
         grid_default_button.on_click = on_click_grid_default
 
-        grid_orange_button = arcade.gui.UIFlatButton(text=text_of_shop_grid_orange, width=250)
+        grid_orange_button = arcade.gui.UIFlatButton(text=text_of_shop_grid_orange, width=250, style=custom_style)
         self.v_box_grid.add(grid_orange_button.with_space_around(bottom=20))
         grid_orange_button.on_click = on_click_grid_orange
 
-        grid_pastel_button = arcade.gui.UIFlatButton(text=text_of_shop_grid_pastel, width=250)
+        grid_pastel_button = arcade.gui.UIFlatButton(text=text_of_shop_grid_pastel, width=250, style=custom_style)
         self.v_box_grid.add(grid_pastel_button.with_space_around(bottom=20))
         grid_pastel_button.on_click = on_click_grid_pastel
 
-        grid_pixel_button = arcade.gui.UIFlatButton(text=text_of_shop_grid_pixel, width=250)
+        grid_pixel_button = arcade.gui.UIFlatButton(text=text_of_shop_grid_pixel, width=250, style=custom_style)
         self.v_box_grid.add(grid_pixel_button.with_space_around(bottom=20))
         grid_pixel_button.on_click = on_click_grid_pixel
+
+        #1
+        buy_status('bg_default')
+        buy_button = arcade.gui.UIFlatButton(text=text_buy_status, width=130, style=custom_style)
+        self.v_box_buy_bg.add(buy_button.with_space_around(bottom=20))
+        buy_button.on_click = on_click_bg_default_buy
+        #2
+        buy_status('bg_car')
+        buy_button = arcade.gui.UIFlatButton(text=text_buy_status, width=130, style=custom_style)
+        self.v_box_buy_bg.add(buy_button.with_space_around(bottom=20))
+        buy_button.on_click = on_click_bg_car_buy
+        #3
+        buy_status('bg_mountain')
+        buy_button = arcade.gui.UIFlatButton(text=text_buy_status, width=130, style=custom_style)
+        self.v_box_buy_bg.add(buy_button.with_space_around(bottom=20))
+        buy_button.on_click = on_click_bg_mountain_buy
+        #4
+        buy_status('bg_window')
+        buy_button = arcade.gui.UIFlatButton(text=text_buy_status, width=130, style=custom_style)
+        self.v_box_buy_bg.add(buy_button.with_space_around(bottom=20))
+        buy_button.on_click = on_click_bg_window_buy
+        #1
+        buy_status('grid_default')
+        buy_button = arcade.gui.UIFlatButton(text=text_buy_status, width=130, style=custom_style)
+        self.v_box_buy_grid.add(buy_button.with_space_around(bottom=20))
+        buy_button.on_click = on_click_grid_default_buy
+        #2
+        buy_status('grid_orange')
+        buy_button = arcade.gui.UIFlatButton(text=text_buy_status, width=130, style=custom_style)
+        self.v_box_buy_grid.add(buy_button.with_space_around(bottom=20))
+        buy_button.on_click = on_click_grid_orange_buy
+        #3
+        buy_status('grid_pastel')
+        buy_button = arcade.gui.UIFlatButton(text=text_buy_status, width=130, style=custom_style)
+        self.v_box_buy_grid.add(buy_button.with_space_around(bottom=20))
+        buy_button.on_click = on_click_grid_pastel_buy
+        #4
+        buy_status('grid_pixel')
+        buy_button = arcade.gui.UIFlatButton(text=text_buy_status, width=130, style=custom_style)
+        self.v_box_buy_grid.add(buy_button.with_space_around(bottom=20))
+        buy_button.on_click = on_click_grid_pixel_buy
+
 
         self.manager.add(
             arcade.gui.UIAnchorWidget(
@@ -1249,16 +1444,30 @@ class Shop(arcade.View):
 
         self.manager_background.add(
             arcade.gui.UIAnchorWidget(
-                align_x= -SCREEN_WIDTH/2 + 185,
+                align_x= -SCREEN_WIDTH/2 + 170,
                 align_y= - 50,
                 child=self.v_box_background)
         )
 
         self.manager_grid.add(
             arcade.gui.UIAnchorWidget(
-                align_x=SCREEN_WIDTH/2 - 185,
+                align_x=SCREEN_WIDTH/2 - 170,
                 align_y= - 50,
                 child=self.v_box_grid)
+        )
+
+        self.manager_buy_bg.add(
+            arcade.gui.UIAnchorWidget(
+                align_x= -SCREEN_WIDTH/2 + 365,
+                align_y= - 50,
+                child=self.v_box_buy_bg)
+        )
+
+        self.manager_buy_grid.add(
+            arcade.gui.UIAnchorWidget(
+                align_x=SCREEN_WIDTH/2 - 365,
+                align_y= - 50,
+                child=self.v_box_buy_grid)
         )
 
     def on_draw(self):
@@ -1267,17 +1476,19 @@ class Shop(arcade.View):
         arcade.draw_lrwh_rectangle_textured(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, self.background)
         arcade.draw_text(f"{text_of_shop_coins}{read_data('Product/meta.txt', 'coins =')}", SCREEN_WIDTH / 2, SCREEN_HEIGHT/2 + 200,
                          arcade.color.PIGGY_PINK, 30, anchor_x="center")
-        arcade.draw_rectangle_filled(SCREEN_WIDTH / 8 + 25, (SCREEN_HEIGHT - 120) / 2 + 25, SCREEN_WIDTH / 4, SCREEN_HEIGHT/2,
+        arcade.draw_rectangle_filled(SCREEN_WIDTH / 6 + 25, (SCREEN_HEIGHT - 120) / 2 + 25, SCREEN_WIDTH / 3, SCREEN_HEIGHT/2,
                                      arcade.color.GRAY_BLUE)
         arcade.draw_text(text_of_shop_background, SCREEN_WIDTH / 8 + 25, (SCREEN_HEIGHT + 250) / 2 - 15,
                          arcade.color.WHITE, 30, anchor_x="center")
-        arcade.draw_rectangle_filled((SCREEN_WIDTH - 180), (SCREEN_HEIGHT - 120) / 2 + 25, SCREEN_WIDTH / 4, SCREEN_HEIGHT/2,
+        arcade.draw_rectangle_filled((SCREEN_WIDTH - (SCREEN_WIDTH / 3 / 2)) - 25, (SCREEN_HEIGHT - 120) / 2 + 25, SCREEN_WIDTH / 3, SCREEN_HEIGHT/2,
                                      arcade.color.GRAY_BLUE)
         arcade.draw_text(text_of_shop_grid, SCREEN_WIDTH - 175, (SCREEN_HEIGHT + 250) / 2 - 15,
                          arcade.color.WHITE, 30, anchor_x="center")
         self.manager.draw()
         self.manager_background.draw()
         self.manager_grid.draw()
+        self.manager_buy_bg.draw()
+        self.manager_buy_grid.draw()
 
 
 class Settings_Menu(arcade.View):
@@ -1343,19 +1554,19 @@ class Settings_Menu(arcade.View):
         self.v_box = arcade.gui.UIBoxLayout()
         self.v_box_of_language = arcade.gui.UIBoxLayout()
 
-        exit_settings_button = arcade.gui.UIFlatButton(text=text_of_back_button, width=200)
+        exit_settings_button = arcade.gui.UIFlatButton(text=text_of_back_button, width=200, style=custom_style)
         self.v_box.add(exit_settings_button.with_space_around(bottom=20))
         exit_settings_button.on_click = on_click_exit_settings
-        russian_language = arcade.gui.UIFlatButton(text="Русский", width=300)
+        russian_language = arcade.gui.UIFlatButton(text="Русский", width=300, style=custom_style)
         self.v_box_of_language.add(russian_language.with_space_around(bottom=20))
         russian_language.on_click = on_click_russian_language
-        english_language = arcade.gui.UIFlatButton(text="English", width=300)
+        english_language = arcade.gui.UIFlatButton(text="English", width=300, style=custom_style)
         self.v_box_of_language.add(english_language.with_space_around(bottom=20))
         english_language.on_click = on_click_english_language
-        german_language = arcade.gui.UIFlatButton(text="Deutsch", width=300)
+        german_language = arcade.gui.UIFlatButton(text="Deutsch", width=300, style=custom_style)
         self.v_box_of_language.add(german_language.with_space_around(bottom=20))
         german_language.on_click = on_click_german_language
-        franch_language = arcade.gui.UIFlatButton(text="Français", width=300)
+        franch_language = arcade.gui.UIFlatButton(text="Français", width=300, style=custom_style)
         self.v_box_of_language.add(franch_language.with_space_around(bottom=20))
         franch_language.on_click = on_click_franch_language
 
@@ -1418,7 +1629,7 @@ class Achievements(arcade.View):
         # Create a vertical BoxGroup to align buttons
         self.v_box = arcade.gui.UIBoxLayout()
 
-        exit_settings_button = arcade.gui.UIFlatButton(text=text_of_back_button, width=200)
+        exit_settings_button = arcade.gui.UIFlatButton(text=text_of_back_button, width=200, style=custom_style)
         self.v_box.add(exit_settings_button.with_space_around(bottom=20))
         exit_settings_button.on_click = on_click_exit_settings
 
@@ -1468,7 +1679,7 @@ class Win_window(arcade.View):
         # Create a vertical BoxGroup to align buttons
         self.v_box = arcade.gui.UIBoxLayout()
 
-        exit_settings_button = arcade.gui.UIFlatButton(text=text_of_back_to_mm, width=400)
+        exit_settings_button = arcade.gui.UIFlatButton(text=text_of_back_to_mm, width=400, style=custom_style)
         self.v_box.add(exit_settings_button.with_space_around(bottom=40))
         exit_settings_button.on_click = on_click_exit_settings
 
