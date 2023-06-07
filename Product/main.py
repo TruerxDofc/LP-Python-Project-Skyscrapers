@@ -41,6 +41,7 @@ text_of_shop_buy = ""; text_of_shop_bought = ""; text_buy_status = "";
 text_of_achievements_first_3 = ""; text_of_achievements_first_4 = ""; text_of_achievements_first_5 = "";
 text_of_achievements_fifth_3 = ""; text_of_achievements_fifth_4 = ""; text_of_achievements_fifth_5 = "";
 text_of_achievements_all = ""; text_of_achievements_1000 = "";
+text_of_settings_reset = ""; text_of_settings_retrieve = "";
 
 class Localization():
     def Russian_lang(self):
@@ -52,7 +53,7 @@ class Localization():
             text_of_shop_grid_default, text_of_shop_grid_orange, text_of_shop_grid_pastel, text_of_shop_grid_pixel, text_of_shop_buy, text_of_shop_bought, \
             text_of_achievements_first_3, text_of_achievements_first_4, text_of_achievements_first_5, \
             text_of_achievements_fifth_3, text_of_achievements_fifth_4, text_of_achievements_fifth_5, \
-            text_of_achievements_all, text_of_achievements_1000
+            text_of_achievements_all, text_of_achievements_1000, text_of_settings_reset, text_of_settings_retrieve
 
         text_of_play_button = "Играть"
         text_of_shop_button = "Магазин"
@@ -100,6 +101,8 @@ class Localization():
         text_of_achievements_fifth_5 = "Пятый раз пройти 5x5"
         text_of_achievements_all = "Купить всё в магазине"
         text_of_achievements_1000 = "Заработать 1000 монет"
+        text_of_settings_reset = "Сбросить прогресс"
+        text_of_settings_retrieve = "Получить всё"
 
     def English_lang(self):
         global text_of_play_button, text_of_shop_button, text_of_settings_button, text_of_achievements_button, \
@@ -110,7 +113,7 @@ class Localization():
             text_of_shop_grid_default, text_of_shop_grid_orange, text_of_shop_grid_pastel, text_of_shop_grid_pixel, text_of_shop_buy, text_of_shop_bought, \
             text_of_achievements_first_3, text_of_achievements_first_4, text_of_achievements_first_5, \
             text_of_achievements_fifth_3, text_of_achievements_fifth_4, text_of_achievements_fifth_5, \
-            text_of_achievements_all, text_of_achievements_1000
+            text_of_achievements_all, text_of_achievements_1000, text_of_settings_reset, text_of_settings_retrieve
 
         text_of_play_button = "Play"
         text_of_shop_button = "Shop"
@@ -159,6 +162,8 @@ class Localization():
         text_of_achievements_fifth_5 = "Fifth time through 5x5"
         text_of_achievements_all = "Buy everything in the store"
         text_of_achievements_1000 = "Earn 1000 coins"
+        text_of_settings_reset = "Reset progress"
+        text_of_settings_retrieve = "Get all"
     
 
     def German_lang(self):
@@ -170,7 +175,7 @@ class Localization():
             text_of_shop_grid_default, text_of_shop_grid_orange, text_of_shop_grid_pastel, text_of_shop_grid_pixel, text_of_shop_buy, text_of_shop_bought, \
             text_of_achievements_first_3, text_of_achievements_first_4, text_of_achievements_first_5, \
             text_of_achievements_fifth_3, text_of_achievements_fifth_4, text_of_achievements_fifth_5, \
-            text_of_achievements_all, text_of_achievements_1000
+            text_of_achievements_all, text_of_achievements_1000, text_of_settings_reset, text_of_settings_retrieve
 
         text_of_play_button = "Spielen"
         text_of_shop_button = "Geschäft"
@@ -218,6 +223,8 @@ class Localization():
         text_of_achievements_fifth_5 = "Fünftes Mal durch 5x5"
         text_of_achievements_all = "Alles im Laden kaufen"
         text_of_achievements_1000 = "1000 Münzen verdienen"
+        text_of_settings_reset = "Fortschritt zurücksetzen"
+        text_of_settings_retrieve = "Alle erhalten"
 
     def Franch_lang(self):
         global text_of_play_button, text_of_shop_button, text_of_settings_button, text_of_achievements_button, \
@@ -228,7 +235,7 @@ class Localization():
             text_of_shop_grid_default, text_of_shop_grid_orange, text_of_shop_grid_pastel, text_of_shop_grid_pixel, text_of_shop_buy, text_of_shop_bought, \
             text_of_achievements_first_3, text_of_achievements_first_4, text_of_achievements_first_5, \
             text_of_achievements_fifth_3, text_of_achievements_fifth_4, text_of_achievements_fifth_5, \
-            text_of_achievements_all, text_of_achievements_1000
+            text_of_achievements_all, text_of_achievements_1000, text_of_settings_reset, text_of_settings_retrieve
 
         text_of_play_button = "Jouer"
         text_of_shop_button = "Boutique"
@@ -276,6 +283,8 @@ class Localization():
         text_of_achievements_fifth_5 = "Cinquième passage au 5x5"
         text_of_achievements_all = "Acheter tout dans le magasin"
         text_of_achievements_1000 = "Gagner 1000 pièces"
+        text_of_settings_reset = "Réinitialiser la progression"
+        text_of_settings_retrieve = "Obtenir tout"
 
 # Перестановка столбцов массива
 def transpose_columns(matrix, col1, col2):
@@ -1561,8 +1570,10 @@ class Settings_Menu(arcade.View):
         # Create variables here
         self.manager1 = None
         self.manager_of_language = None
+        self.manager_stats = None
         self.v_box = None
         self.v_box_of_language = None
+        self.v_box_stats = None
 
         self.background = arcade.load_texture(f"Product/background_{background_mode}.jpg")
 
@@ -1609,14 +1620,57 @@ class Settings_Menu(arcade.View):
             game_view.setup()
             self.window.show_view(game_view)
 
+        def on_click_reset_all(event):
+            write_data('Product/meta.txt', 'grid_mode =', 'default')
+            write_data('Product/meta.txt', 'background_mode =', 'default')
+            write_data('Product/meta.txt', 'coins =', '0')
+            write_data('Product/meta.txt', 'shop_bg_car =', '0')
+            write_data('Product/meta.txt', 'shop_bg_mountain =', '0')
+            write_data('Product/meta.txt', 'shop_bg_window =', '0')
+            write_data('Product/meta.txt', 'shop_grid_orange =', '0')
+            write_data('Product/meta.txt', 'shop_grid_pastel =', '0')
+            write_data('Product/meta.txt', 'shop_grid_pixel =', '0')
+            write_data('Product/meta.txt', 'achievements_first_3 =', '0')
+            write_data('Product/meta.txt', 'achievements_first_4 =', '0')
+            write_data('Product/meta.txt', 'achievements_first_5 =', '0')
+            write_data('Product/meta.txt', 'achievements_fifth_3 =', '0')
+            write_data('Product/meta.txt', 'achievements_fifth_4 =', '0')
+            write_data('Product/meta.txt', 'achievements_fifth_5 =', '0')
+            write_data('Product/meta.txt', 'achievements_all =', '0')
+            write_data('Product/meta.txt', 'achievements_1000 =', '0')
+            game_view = Settings_Menu()
+            game_view.setup()
+            self.window.show_view(game_view)
+            managerclear(self)
+            uimanagerclear(self)
+        
+        def on_click_retrieve_all(event):
+            write_data('Product/meta.txt', 'coins =', '9999')
+            write_data('Product/meta.txt', 'shop_bg_car =', '1')
+            write_data('Product/meta.txt', 'shop_bg_mountain =', '1')
+            write_data('Product/meta.txt', 'shop_bg_window =', '1')
+            write_data('Product/meta.txt', 'shop_grid_orange =', '1')
+            write_data('Product/meta.txt', 'shop_grid_pastel =', '1')
+            write_data('Product/meta.txt', 'shop_grid_pixel =', '1')
+            write_data('Product/meta.txt', 'achievements_all =', '1')
+            write_data('Product/meta.txt', 'achievements_1000 =', '1')
+            game_view = Settings_Menu()
+            game_view.setup()
+            self.window.show_view(game_view)
+            managerclear(self)
+            uimanagerclear(self)
+
         self.manager1 = arcade.gui.UIManager()
         self.manager1.enable()
         self.manager_of_language = arcade.gui.UIManager()
         self.manager_of_language.enable()
+        self.manager_stats = arcade.gui.UIManager()
+        self.manager_stats.enable()
 
         # Create a vertical BoxGroup to align buttons
         self.v_box = arcade.gui.UIBoxLayout()
         self.v_box_of_language = arcade.gui.UIBoxLayout()
+        self.v_box_stats = arcade.gui.UIBoxLayout()
 
         exit_settings_button = arcade.gui.UIFlatButton(text=text_of_back_button, width=200, style=custom_style)
         self.v_box.add(exit_settings_button.with_space_around(bottom=20))
@@ -1634,6 +1688,14 @@ class Settings_Menu(arcade.View):
         self.v_box_of_language.add(franch_language.with_space_around(bottom=20))
         franch_language.on_click = on_click_franch_language
 
+        reset_all = arcade.gui.UIFlatButton(text=text_of_settings_reset, width=300, style=custom_style)
+        self.v_box_stats.add(reset_all.with_space_around(bottom=20))
+        reset_all.on_click = on_click_reset_all
+        retrieve_all = arcade.gui.UIFlatButton(text=text_of_settings_retrieve, width=300, style=custom_style)
+        self.v_box_stats.add(retrieve_all.with_space_around(bottom=20))
+        retrieve_all.on_click = on_click_retrieve_all
+
+
         self.manager1.add(
             arcade.gui.UIAnchorWidget(
                 align_x=SCREEN_WIDTH / 2 - 125,
@@ -1646,6 +1708,12 @@ class Settings_Menu(arcade.View):
                 align_y= -75,
                 child=self.v_box_of_language)
         )
+        self.manager_stats.add(
+            arcade.gui.UIAnchorWidget(
+                align_x= -SCREEN_WIDTH/2 + (SCREEN_WIDTH / 8 + 25),
+                align_y= SCREEN_HEIGHT/2 - 100,
+                child=self.v_box_stats)
+        )
 
     def on_draw(self):
         """ Draw everything for the game. """
@@ -1657,6 +1725,7 @@ class Settings_Menu(arcade.View):
                          arcade.color.WHITE, 30, anchor_x="center")
         self.manager_of_language.draw()
         self.manager1.draw()
+        self.manager_stats.draw()
 
 
 class Achievements(arcade.View):
