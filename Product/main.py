@@ -32,21 +32,27 @@ custom_style = {
 
 text_of_play_button = ""; text_of_shop_button = ""; text_of_settings_button = ""
 text_of_achievements_button = ""; text_of_exit_button = ""; text_of_back_button = ""; text_of_back_to_mm = ""
-text_of_language_settings = ""; text_of_resolution_settings = ""
+text_of_language_settings = ""
 text_of_tip_button = ""; text_of_tip = ""; text_of_game3x3 = ""; text_of_game4x4 = ""; text_of_game5x5 = ""; text_of_win_window = ""; text_of_win_window_coins = ""
 text_of_win_window_coin = ""; text_of_shop_coins = ""; text_of_shop_background = ""; text_of_shop_grid = "";
 text_of_shop_background_default = ""; text_of_shop_background_car = ""; text_of_shop_background_mountain = ""; text_of_shop_background_window = ""
 text_of_shop_grid_default = ""; text_of_shop_grid_orange = ""; text_of_shop_grid_pastel = ""; text_of_shop_grid_pixel = "";
 text_of_shop_buy = ""; text_of_shop_bought = ""; text_buy_status = "";
+text_of_achievements_first_3 = ""; text_of_achievements_first_4 = ""; text_of_achievements_first_5 = "";
+text_of_achievements_fifth_3 = ""; text_of_achievements_fifth_4 = ""; text_of_achievements_fifth_5 = "";
+text_of_achievements_all = ""; text_of_achievements_1000 = "";
 
 class Localization():
     def Russian_lang(self):
         global text_of_play_button, text_of_shop_button, text_of_settings_button, text_of_achievements_button, \
-            text_of_exit_button, text_of_back_button, text_of_back_to_mm, text_of_language_settings, text_of_resolution_settings, \
+            text_of_exit_button, text_of_back_button, text_of_back_to_mm, text_of_language_settings, \
             text_of_tip_button, text_of_tip, text_of_game3x3, text_of_game4x4, text_of_game5x5, text_of_win_window, text_of_win_window_coins, \
             text_of_win_window_coin, text_of_shop_coins, text_of_shop_background, text_of_shop_grid, \
             text_of_shop_background_default, text_of_shop_background_car, text_of_shop_background_mountain, text_of_shop_background_window, \
-            text_of_shop_grid_default, text_of_shop_grid_orange, text_of_shop_grid_pastel, text_of_shop_grid_pixel, text_of_shop_buy, text_of_shop_bought
+            text_of_shop_grid_default, text_of_shop_grid_orange, text_of_shop_grid_pastel, text_of_shop_grid_pixel, text_of_shop_buy, text_of_shop_bought, \
+            text_of_achievements_first_3, text_of_achievements_first_4, text_of_achievements_first_5, \
+            text_of_achievements_fifth_3, text_of_achievements_fifth_4, text_of_achievements_fifth_5, \
+            text_of_achievements_all, text_of_achievements_1000
 
         text_of_play_button = "Играть"
         text_of_shop_button = "Магазин"
@@ -56,7 +62,6 @@ class Localization():
         text_of_back_button = "Назад"
         text_of_back_to_mm = "В Главное меню"
         text_of_language_settings = "Язык"
-        text_of_resolution_settings = "Разрешение"
         text_of_tip_button = "Подсказка"
         text_of_tip = (
             "\n"
@@ -87,14 +92,25 @@ class Localization():
         text_of_shop_grid_pixel = "Пиксельная"
         text_of_shop_buy = "Купить"
         text_of_shop_bought = "Куплено"
+        text_of_achievements_first_3 = "Первый раз пройти 3x3"
+        text_of_achievements_first_4 = "Первый раз пройти 4x4" 
+        text_of_achievements_first_5 = "Первый раз пройти 5x5"
+        text_of_achievements_fifth_3 = "Пятый раз пройти 3x3"
+        text_of_achievements_fifth_4 = "Пятый раз пройти 4x4"
+        text_of_achievements_fifth_5 = "Пятый раз пройти 5x5"
+        text_of_achievements_all = "Купить всё в магазине"
+        text_of_achievements_1000 = "Заработать 1000 монет"
 
     def English_lang(self):
         global text_of_play_button, text_of_shop_button, text_of_settings_button, text_of_achievements_button, \
-            text_of_exit_button, text_of_back_button, text_of_back_to_mm, text_of_language_settings, text_of_resolution_settings, \
+            text_of_exit_button, text_of_back_button, text_of_back_to_mm, text_of_language_settings, \
             text_of_tip_button, text_of_tip, text_of_game3x3, text_of_game4x4, text_of_game5x5, text_of_win_window, text_of_win_window_coins, \
             text_of_win_window_coin, text_of_shop_coins, text_of_shop_background, text_of_shop_grid, \
             text_of_shop_background_default, text_of_shop_background_car, text_of_shop_background_mountain, text_of_shop_background_window, \
-            text_of_shop_grid_default, text_of_shop_grid_orange, text_of_shop_grid_pastel, text_of_shop_grid_pixel, text_of_shop_buy, text_of_shop_bought
+            text_of_shop_grid_default, text_of_shop_grid_orange, text_of_shop_grid_pastel, text_of_shop_grid_pixel, text_of_shop_buy, text_of_shop_bought, \
+            text_of_achievements_first_3, text_of_achievements_first_4, text_of_achievements_first_5, \
+            text_of_achievements_fifth_3, text_of_achievements_fifth_4, text_of_achievements_fifth_5, \
+            text_of_achievements_all, text_of_achievements_1000
 
         text_of_play_button = "Play"
         text_of_shop_button = "Shop"
@@ -104,7 +120,6 @@ class Localization():
         text_of_back_button = "Back"
         text_of_back_to_mm = "To the Main Menu"
         text_of_language_settings = "Language"
-        text_of_resolution_settings = "Resolution"
         text_of_tip_button = "Tip"
         text_of_tip = (
             "\n"
@@ -136,15 +151,26 @@ class Localization():
         text_of_shop_grid_pixel = "Pixel";
         text_of_shop_buy = "Buy"; 
         text_of_shop_bought = "Bought";
+        text_of_achievements_first_3 = "First time to go 3x3"
+        text_of_achievements_first_4 = "First time to go 4x4" 
+        text_of_achievements_first_5 = "First time to go 5x5"
+        text_of_achievements_fifth_3 = "Fifth time through 3x3"
+        text_of_achievements_fifth_4 = "Fifth time through 4x4"
+        text_of_achievements_fifth_5 = "Fifth time through 5x5"
+        text_of_achievements_all = "Buy everything in the store"
+        text_of_achievements_1000 = "Earn 1000 coins"
     
 
     def German_lang(self):
         global text_of_play_button, text_of_shop_button, text_of_settings_button, text_of_achievements_button, \
-            text_of_exit_button, text_of_back_button, text_of_back_to_mm, text_of_language_settings, text_of_resolution_settings, \
+            text_of_exit_button, text_of_back_button, text_of_back_to_mm, text_of_language_settings, \
             text_of_tip_button, text_of_tip, text_of_game3x3, text_of_game4x4, text_of_game5x5, text_of_win_window, text_of_win_window_coins, \
             text_of_win_window_coin, text_of_shop_coins, text_of_shop_background, text_of_shop_grid, \
             text_of_shop_background_default, text_of_shop_background_car, text_of_shop_background_mountain, text_of_shop_background_window, \
-            text_of_shop_grid_default, text_of_shop_grid_orange, text_of_shop_grid_pastel, text_of_shop_grid_pixel, text_of_shop_buy, text_of_shop_bought
+            text_of_shop_grid_default, text_of_shop_grid_orange, text_of_shop_grid_pastel, text_of_shop_grid_pixel, text_of_shop_buy, text_of_shop_bought, \
+            text_of_achievements_first_3, text_of_achievements_first_4, text_of_achievements_first_5, \
+            text_of_achievements_fifth_3, text_of_achievements_fifth_4, text_of_achievements_fifth_5, \
+            text_of_achievements_all, text_of_achievements_1000
 
         text_of_play_button = "Spielen"
         text_of_shop_button = "Geschäft"
@@ -154,7 +180,6 @@ class Localization():
         text_of_back_button = "Zurück"
         text_of_back_to_mm = "Zum Hauptmenü"
         text_of_language_settings = "Sprache"
-        text_of_resolution_settings = "Auflösung"
         text_of_tip_button = "Tipp"
         text_of_tip = (
             "\n"
@@ -185,14 +210,25 @@ class Localization():
         text_of_shop_grid_pixel = "Pixel"
         text_of_shop_buy = "Kaufen" 
         text_of_shop_bought = "Gekauft bei"
+        text_of_achievements_first_3 = "Zum ersten Mal 3x3"
+        text_of_achievements_first_4 = "Zum ersten Mal 4x4" 
+        text_of_achievements_first_5 = "Zum ersten Mal 5x5"
+        text_of_achievements_fifth_3 = "Fünftes Mal durch 3x3"
+        text_of_achievements_fifth_4 = "Fünftes Mal durch 4x4"
+        text_of_achievements_fifth_5 = "Fünftes Mal durch 5x5"
+        text_of_achievements_all = "Alles im Laden kaufen"
+        text_of_achievements_1000 = "1000 Münzen verdienen"
 
     def Franch_lang(self):
         global text_of_play_button, text_of_shop_button, text_of_settings_button, text_of_achievements_button, \
-            text_of_exit_button, text_of_back_button, text_of_back_to_mm, text_of_language_settings, text_of_resolution_settings, \
+            text_of_exit_button, text_of_back_button, text_of_back_to_mm, text_of_language_settings, \
             text_of_tip_button, text_of_tip, text_of_game3x3, text_of_game4x4, text_of_game5x5, text_of_win_window, text_of_win_window_coins, \
             text_of_win_window_coin, text_of_shop_coins, text_of_shop_background, text_of_shop_grid, \
             text_of_shop_background_default, text_of_shop_background_car, text_of_shop_background_mountain, text_of_shop_background_window, \
-            text_of_shop_grid_default, text_of_shop_grid_orange, text_of_shop_grid_pastel, text_of_shop_grid_pixel, text_of_shop_buy, text_of_shop_bought
+            text_of_shop_grid_default, text_of_shop_grid_orange, text_of_shop_grid_pastel, text_of_shop_grid_pixel, text_of_shop_buy, text_of_shop_bought, \
+            text_of_achievements_first_3, text_of_achievements_first_4, text_of_achievements_first_5, \
+            text_of_achievements_fifth_3, text_of_achievements_fifth_4, text_of_achievements_fifth_5, \
+            text_of_achievements_all, text_of_achievements_1000
 
         text_of_play_button = "Jouer"
         text_of_shop_button = "Boutique"
@@ -202,7 +238,6 @@ class Localization():
         text_of_back_button = "Retour"
         text_of_back_to_mm = "Vers le menu principal"
         text_of_language_settings = "Langue"
-        text_of_resolution_settings = "Résolution"
         text_of_tip_button = "Conseil"
         text_of_tip = (
             "\n"
@@ -233,6 +268,14 @@ class Localization():
         text_of_shop_grid_pixel = "Pixel"
         text_of_shop_buy = "Acheter"
         text_of_shop_bought = "Acheté à"
+        text_of_achievements_first_3 = "Première fois à 3x3"
+        text_of_achievements_first_4 = "Première fois à 4x4" 
+        text_of_achievements_first_5 = "Première fois à 5x5"
+        text_of_achievements_fifth_3 = "Cinquième passage au 3x3"
+        text_of_achievements_fifth_4 = "Cinquième passage au 4x4"
+        text_of_achievements_fifth_5 = "Cinquième passage au 5x5"
+        text_of_achievements_all = "Acheter tout dans le magasin"
+        text_of_achievements_1000 = "Gagner 1000 pièces"
 
 # Перестановка столбцов массива
 def transpose_columns(matrix, col1, col2):
@@ -712,11 +755,18 @@ class Game_3x3(arcade.View):
                 amount_of_coins = 5
                 coin = int(read_data('Product/meta.txt', 'coins =')) + 5
                 write_data('Product/meta.txt', 'coins =', coin)
+                if read_data('Product/meta.txt', 'achievements_first_3 =') == '0':
+                    write_data('Product/meta.txt', 'achievements_first_3 =', 1)
+                if int(read_data('Product/meta.txt', 'achievements_fifth_3 =')) < 5:
+                    stage = int(read_data('Product/meta.txt', 'achievements_fifth_3 =')) + 1
+                    write_data('Product/meta.txt', 'achievements_fifth_3 =', stage)
+                if int(read_data('Product/meta.txt', 'coins =')) >= 1000:
+                    write_data('Product/meta.txt', 'achievements_1000 =', 1)
                 game_view = Win_window()
                 self.window.show_view(game_view)
                 managerclear(self)
                 uimanagerclear(self)
-     
+   
 
 class Game_4x4(arcade.View):
     def __init__(self):
@@ -912,6 +962,13 @@ class Game_4x4(arcade.View):
                 amount_of_coins = 30
                 coin = int(read_data('Product/meta.txt', 'coins =')) + 30
                 write_data('Product/meta.txt', 'coins =', coin)
+                if read_data('Product/meta.txt', 'achievements_first_4 =') == '0':
+                    write_data('Product/meta.txt', 'achievements_first_4 =', 1)
+                if int(read_data('Product/meta.txt', 'achievements_fifth_4 =')) < 5:
+                    stage = int(read_data('Product/meta.txt', 'achievements_fifth_4 =')) + 1
+                    write_data('Product/meta.txt', 'achievements_fifth_4 =', stage)
+                if int(read_data('Product/meta.txt', 'coins =')) >= 1000:
+                    write_data('Product/meta.txt', 'achievements_1000 =', 1)
                 game_view = Win_window()
                 self.window.show_view(game_view)
                 managerclear(self)
@@ -1114,6 +1171,13 @@ class Game_5x5(arcade.View):
                 amount_of_coins = 100
                 coin = int(read_data('Product/meta.txt', 'coins =')) + 100
                 write_data('Product/meta.txt', 'coins =', coin)
+                if read_data('Product/meta.txt', 'achievements_first_5 =') == '0':
+                    write_data('Product/meta.txt', 'achievements_first_5 =', 1)
+                if int(read_data('Product/meta.txt', 'achievements_fifth_5 =')) < 5:
+                    stage = int(read_data('Product/meta.txt', 'achievements_fifth_5 =')) + 1
+                    write_data('Product/meta.txt', 'achievements_fifth_5 =', stage)
+                if int(read_data('Product/meta.txt', 'coins =')) >= 1000:
+                    write_data('Product/meta.txt', 'achievements_1000 =', 1)
                 game_view = Win_window()
                 self.window.show_view(game_view)
                 managerclear(self)
@@ -1591,10 +1655,6 @@ class Settings_Menu(arcade.View):
                                      arcade.color.GRAY_BLUE)
         arcade.draw_text(text_of_language_settings, SCREEN_WIDTH / 8 + 25, (SCREEN_HEIGHT + 250) / 2 - 15,
                          arcade.color.WHITE, 30, anchor_x="center")
-        arcade.draw_rectangle_filled((SCREEN_WIDTH / 3 + 25*5), (SCREEN_HEIGHT - 250) / 2 + 25, SCREEN_WIDTH / 4, SCREEN_HEIGHT - 250,
-                                     arcade.color.GRAY_BLUE)
-        arcade.draw_text(text_of_resolution_settings, SCREEN_WIDTH / 2.35, (SCREEN_HEIGHT + 250) / 2 - 15,
-                         arcade.color.WHITE, 30, anchor_x="center")
         self.manager_of_language.draw()
         self.manager1.draw()
 
@@ -1607,6 +1667,9 @@ class Achievements(arcade.View):
         self.v_box = None
 
         self.background = arcade.load_texture(f"Product/background_{background_mode}.jpg")
+
+        if read_data('Product/meta.txt', 'shop_bg_car =') == '1' and read_data('Product/meta.txt', 'shop_bg_mountain =') == '1' and read_data('Product/meta.txt', 'shop_bg_window =') == '1' and read_data('Product/meta.txt', 'shop_grid_orange =') == '1' and read_data('Product/meta.txt', 'shop_grid_pastel =') == '1' and read_data('Product/meta.txt', 'shop_grid_pixel =') == '1':
+            write_data('Product/meta.txt', 'achievements_all =', 1)
 
     def setup(self):
         """ This should set up your game and get it ready to play """
@@ -1646,6 +1709,79 @@ class Achievements(arcade.View):
         arcade.draw_lrwh_rectangle_textured(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, self.background)
         self.manager.draw()
 
+        arcade.draw_rectangle_filled(300, SCREEN_HEIGHT - 200, 500, 100,
+                                     arcade.color.GRAY_BLUE)
+        if read_data('Product/meta.txt', 'achievements_first_3 =') == '1':
+            arcade.draw_circle_filled(300+200, SCREEN_HEIGHT - 200, 35, arcade.color.MEDIUM_SPRING_GREEN)
+        else:
+            arcade.draw_circle_filled(300+200, SCREEN_HEIGHT - 200, 35, arcade.color.RED_BROWN)
+        arcade.draw_text(text_of_achievements_first_3, 250, SCREEN_HEIGHT - 210,
+                         arcade.color.WHITE, 20, anchor_x="center", font_name= ("Comic Sans MS", "arial"))
+
+        arcade.draw_rectangle_filled(300, SCREEN_HEIGHT - 350, 500, 100,
+                                     arcade.color.GRAY_BLUE)
+        if read_data('Product/meta.txt', 'achievements_first_4 =') == '1':
+            arcade.draw_circle_filled(300+200, SCREEN_HEIGHT - 350, 35, arcade.color.MEDIUM_SPRING_GREEN)
+        else:
+            arcade.draw_circle_filled(300+200, SCREEN_HEIGHT - 350, 35, arcade.color.RED_BROWN)
+        arcade.draw_text(text_of_achievements_first_4, 250, SCREEN_HEIGHT - 360,
+                         arcade.color.WHITE, 20, anchor_x="center", font_name= ("Comic Sans MS", "arial"))
+
+        arcade.draw_rectangle_filled(300, SCREEN_HEIGHT - 500, 500, 100,
+                                     arcade.color.GRAY_BLUE)
+        if read_data('Product/meta.txt', 'achievements_first_5 =') == '1':
+            arcade.draw_circle_filled(300+200, SCREEN_HEIGHT - 500, 35, arcade.color.MEDIUM_SPRING_GREEN)
+        else:
+            arcade.draw_circle_filled(300+200, SCREEN_HEIGHT - 500, 35, arcade.color.RED_BROWN)
+        arcade.draw_text(text_of_achievements_first_5, 250, SCREEN_HEIGHT - 510,
+                         arcade.color.WHITE, 20, anchor_x="center", font_name= ("Comic Sans MS", "arial"))
+
+        arcade.draw_rectangle_filled(300, SCREEN_HEIGHT - 650, 500, 100,
+                                     arcade.color.GRAY_BLUE)
+        if read_data('Product/meta.txt', 'achievements_all =') == '1':
+            arcade.draw_circle_filled(300+200, SCREEN_HEIGHT - 650, 35, arcade.color.MEDIUM_SPRING_GREEN)
+        else:
+            arcade.draw_circle_filled(300+200, SCREEN_HEIGHT - 650, 35, arcade.color.RED_BROWN)
+        arcade.draw_text(text_of_achievements_all, 250, SCREEN_HEIGHT - 660,
+                         arcade.color.WHITE, 20, anchor_x="center", font_name= ("Comic Sans MS", "arial"))
+
+        
+        arcade.draw_rectangle_filled(SCREEN_WIDTH - 300, SCREEN_HEIGHT - 200, 500, 100,
+                                     arcade.color.GRAY_BLUE)
+        if read_data('Product/meta.txt', 'achievements_fifth_3 =') == '5':
+            arcade.draw_circle_filled(SCREEN_WIDTH - 300+200, SCREEN_HEIGHT - 200, 35, arcade.color.MEDIUM_SPRING_GREEN)
+        else:
+            arcade.draw_circle_filled(SCREEN_WIDTH - 300+200, SCREEN_HEIGHT - 200, 35, arcade.color.RED_BROWN)
+        arcade.draw_text(text_of_achievements_fifth_3, SCREEN_WIDTH - 350, SCREEN_HEIGHT - 210,
+                         arcade.color.WHITE, 20, anchor_x="center", font_name= ("Comic Sans MS", "arial"))
+
+        arcade.draw_rectangle_filled(SCREEN_WIDTH - 300, SCREEN_HEIGHT - 350, 500, 100,
+                                     arcade.color.GRAY_BLUE)
+        if read_data('Product/meta.txt', 'achievements_fifth_4 =') == '5':
+            arcade.draw_circle_filled(SCREEN_WIDTH - 300+200, SCREEN_HEIGHT - 350, 35, arcade.color.MEDIUM_SPRING_GREEN)
+        else:
+            arcade.draw_circle_filled(SCREEN_WIDTH - 300+200, SCREEN_HEIGHT - 350, 35, arcade.color.RED_BROWN)
+        arcade.draw_text(text_of_achievements_fifth_4, SCREEN_WIDTH - 350, SCREEN_HEIGHT - 360,
+                         arcade.color.WHITE, 20, anchor_x="center", font_name= ("Comic Sans MS", "arial"))
+
+        arcade.draw_rectangle_filled(SCREEN_WIDTH - 300, SCREEN_HEIGHT - 500, 500, 100,
+                                     arcade.color.GRAY_BLUE)
+        if read_data('Product/meta.txt', 'achievements_fifth_5 =') == '5':
+            arcade.draw_circle_filled(SCREEN_WIDTH - 300+200, SCREEN_HEIGHT - 500, 35, arcade.color.MEDIUM_SPRING_GREEN)
+        else:
+            arcade.draw_circle_filled(SCREEN_WIDTH - 300+200, SCREEN_HEIGHT - 500, 35, arcade.color.RED_BROWN)
+        arcade.draw_text(text_of_achievements_fifth_5, SCREEN_WIDTH - 350, SCREEN_HEIGHT - 510,
+                         arcade.color.WHITE, 20, anchor_x="center", font_name= ("Comic Sans MS", "arial"))
+
+        arcade.draw_rectangle_filled(SCREEN_WIDTH - 300, SCREEN_HEIGHT - 650, 500, 100,
+                                     arcade.color.GRAY_BLUE)
+        if read_data('Product/meta.txt', 'achievements_1000 =') == '1':
+            arcade.draw_circle_filled(SCREEN_WIDTH - 300+200, SCREEN_HEIGHT - 650, 35, arcade.color.MEDIUM_SPRING_GREEN)
+        else:
+            arcade.draw_circle_filled(SCREEN_WIDTH - 300+200, SCREEN_HEIGHT - 650, 35, arcade.color.RED_BROWN)
+        arcade.draw_text(text_of_achievements_1000, SCREEN_WIDTH - 350, SCREEN_HEIGHT - 660,
+                         arcade.color.WHITE, 20, anchor_x="center", font_name= ("Comic Sans MS", "arial"))
+        
 
 class Win_window(arcade.View):
     def __init__(self):

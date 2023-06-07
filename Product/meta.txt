@@ -1,5 +1,5 @@
 grid_mode = default
-coins = 3585
+coins = 0
 background_mode = default
 
 shop_bg_default = 1
@@ -18,6 +18,15 @@ shop_grid_pastel = 0
 shop_grid_pastel_price = 400
 shop_grid_pixel = 0
 shop_grid_pixel_price = 800
+
+achievements_first_3 = 0
+achievements_first_4 = 0
+achievements_first_5 = 0
+achievements_fifth_3 = 0
+achievements_fifth_4 = 0
+achievements_fifth_5 = 0
+achievements_all = 0
+achievements_1000 = 0
 
 
 
