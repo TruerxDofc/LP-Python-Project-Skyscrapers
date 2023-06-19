@@ -1,6 +1,74 @@
 grid_mode = default
-coins = 15
-background_mode = mountain
+coins = 0
+background_mode = default
+
+shop_bg_default = 1
+shop_bg_car = 0
+shop_bg_mountain = 0
+shop_bg_window = 0
+shop_grid_default = 1
+shop_grid_orange = 0
+shop_grid_pastel = 0
+shop_grid_pixel = 0
+
+achievements_first_3 = 0
+achievements_first_4 = 0
+achievements_first_5 = 0
+achievements_fifth_3 = 0
+achievements_fifth_4 = 0
+achievements_fifth_5 = 0
+achievements_all = 0
+achievements_1000 = 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

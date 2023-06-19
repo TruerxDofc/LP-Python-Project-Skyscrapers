@@ -1,0 +1,2 @@
+import auto_py_to_exe
+print(auto_py_to_exe.__version__)
